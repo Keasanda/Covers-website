@@ -287,6 +287,67 @@
             box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
         }
         
+        /* New product image gallery styles */
+        .product-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .main-image-container {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            background-color: rgba(141, 100, 77, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .main-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 1rem;
+        }
+        
+        .thumbnail-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+        }
+        
+        .thumbnail-container {
+            aspect-ratio: 1 / 1;
+            border-radius: 0.375rem;
+            overflow: hidden;
+            background-color: rgba(141, 100, 77, 0.1);
+            cursor: pointer;
+            border: 2px solid #d1d5db;
+            transition: border-color 0.2s ease;
+        }
+        
+        .thumbnail-container.active {
+            border-color: #1f2937;
+        }
+        
+        .thumbnail {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 0.5rem;
+        }
+        
+        .product-id {
+            background-color: #f3f4f6;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        
         /* Media queries */
         @media (min-width: 768px) {
             .md-flex {
@@ -295,6 +356,20 @@
             
             .md\:grid-cols-2 {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            
+            .product-gallery {
+                flex-direction: row;
+                gap: 1.5rem;
+            }
+            
+            .thumbnail-row {
+                grid-template-columns: 1fr;
+                width: 100px;
+            }
+            
+            .main-image-container {
+                flex: 1;
             }
         }
         
@@ -367,28 +442,37 @@
             <div class="max-w-7xl mx-auto px-6 py-12">
                 <div class="grid md:grid-cols-2 gap-12">
                     <!-- Product Images -->
-                    <div class="space-y-4">
-                        <div class="aspect-square bg-[#8d644d]/10 rounded-lg overflow-hidden">
+                    <div class="product-gallery">
+                        <div class="main-image-container">
                             <img
                                 id="main-product-image"
                                 src="https://ext.same-assets.com/700541728/4199498656.png"
-                                alt="Product"
-                                class="w-full h-full object-contain p-4"
+                                alt="Fynbos Food Cover - Product View"
+                                class="main-image"
                             />
                         </div>
-                        <div class="grid grid-cols-4 gap-4">
-                            <button
-                                class="aspect-square rounded-lg overflow-hidden border-2 bg-[#8d644d]/10 border-gray-800 product-thumbnail"
-                                data-index="0"
-                            >
-                                <img src="https://ext.same-assets.com/700541728/4199498656.png" alt="Thumbnail 1" class="w-full h-full object-contain p-2" />
-                            </button>
-                            <button
-                                class="aspect-square rounded-lg overflow-hidden border-2 bg-[#8d644d]/10 border-gray-300 product-thumbnail"
-                                data-index="1"
-                            >
-                                <img src="https://ext.same-assets.com/700541728/3813091546.jpeg" alt="Thumbnail 2" class="w-full h-full object-contain p-2" />
-                            </button>
+                        <div class="thumbnail-row">
+                            <div class="thumbnail-container active" data-index="0">
+                                <img 
+                                    src="https://ext.same-assets.com/700541728/4199498656.png" 
+                                    alt="Fynbos Food Cover - Front View" 
+                                    class="thumbnail"
+                                />
+                            </div>
+                            <div class="thumbnail-container" data-index="1">
+                                <img 
+                                    src="https://ext.same-assets.com/700541728/3813091546.jpeg" 
+                                    alt="Fynbos Food Cover - Side View" 
+                                    class="thumbnail"
+                                />
+                            </div>
+                            <div class="thumbnail-container" data-index="2">
+                                <img 
+                                    src="https://ext.same-assets.com/700541728/1755414100.jpeg" 
+                                    alt="Fynbos Food Cover - In Use" 
+                                    class="thumbnail"
+                                />
+                            </div>
                         </div>
                     </div>
 
@@ -396,9 +480,10 @@
                     <div class="space-y-6">
                         <div>
                             <div class="text-xs text-gray-600 mb-2 tracking-wide">GREENIE</div>
-                            <h1 class="text-3xl font-light text-gray-900 mb-4 leading-tight">
+                            <h1 class="text-3xl font-light text-gray-900 mb-2 leading-tight">
                                 "Fynbos" Food Cover (Artist Collection) - Shaune Rogatschnig
                             </h1>
+                            <div class="product-id">Product ID: GR-FC-FYNBOS-001</div>
                             <div class="text-xl text-gray-900 mb-2">R 720.00 ZAR</div>
                             <div class="text-sm text-gray-600">
                                 Taxes included. <a href="#" class="underline">Shipping</a> calculated at checkout.
@@ -517,6 +602,7 @@
                             <div class="p-4 bg-white">
                                 <h3 class="text-sm text-gray-900 mb-2 line-clamp-2 min-h-[2.5rem]">Endangered Species Food Cover (Artist Collection) - Sharon B Designs</h3>
                                 <p class="text-sm text-gray-700">R 720.00 ZAR</p>
+                                <div class="text-xs text-gray-500 mt-1">Product ID: GR-FC-ENDANGERED-002</div>
                             </div>
                         </div>
                         <div class="card overflow-hidden border-0 shadow-sm hover:shadow-md transition-shadow">
@@ -530,6 +616,7 @@
                             <div class="p-4 bg-white">
                                 <h3 class="text-sm text-gray-900 mb-2 line-clamp-2 min-h-[2.5rem]">"Save our Ocean" Food Covers (Artist Collection) - Pudding & Pickles</h3>
                                 <p class="text-sm text-gray-700">R 720.00 ZAR</p>
+                                <div class="text-xs text-gray-500 mt-1">Product ID: GR-FC-OCEAN-003</div>
                             </div>
                         </div>
                         <div class="card overflow-hidden border-0 shadow-sm hover:shadow-md transition-shadow">
@@ -543,6 +630,7 @@
                             <div class="p-4 bg-white">
                                 <h3 class="text-sm text-gray-900 mb-2 line-clamp-2 min-h-[2.5rem]">Botanical Food Cover (Artist Collection) - Kim Black</h3>
                                 <p class="text-sm text-gray-700">R 720.00 ZAR</p>
+                                <div class="text-xs text-gray-500 mt-1">Product ID: GR-FC-BOTANICAL-004</div>
                             </div>
                         </div>
                         <div class="card overflow-hidden border-0 shadow-sm hover:shadow-md transition-shadow">
@@ -556,6 +644,7 @@
                             <div class="p-4 bg-white">
                                 <h3 class="text-sm text-gray-900 mb-2 line-clamp-2 min-h-[2.5rem]">Food Covers Shweshwe (Set of 6)</h3>
                                 <p class="text-sm text-gray-700">R 630.00 ZAR</p>
+                                <div class="text-xs text-gray-500 mt-1">Product ID: GR-FC-SHWESHWE-005</div>
                             </div>
                         </div>
                     </div>
@@ -610,24 +699,23 @@
             
             // Image selection functionality
             const mainProductImage = document.getElementById('main-product-image');
-            const thumbnailButtons = document.querySelectorAll('.product-thumbnail');
+            const thumbnailContainers = document.querySelectorAll('.thumbnail-container');
             
-            thumbnailButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const imageIndex = this.getAttribute('data-index');
+            thumbnailContainers.forEach(container => {
+                container.addEventListener('click', function() {
                     const imageSrc = this.querySelector('img').src;
+                    const altText = this.querySelector('img').alt;
                     
                     // Update main image
                     mainProductImage.src = imageSrc;
+                    mainProductImage.alt = altText;
                     
                     // Update active thumbnail
-                    thumbnailButtons.forEach(btn => {
-                        btn.classList.remove('border-gray-800');
-                        btn.classList.add('border-gray-300');
+                    thumbnailContainers.forEach(cont => {
+                        cont.classList.remove('active');
                     });
                     
-                    this.classList.remove('border-gray-300');
-                    this.classList.add('border-gray-800');
+                    this.classList.add('active');
                 });
             });
         });
