@@ -1,720 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Greenie - Product Page</title>
     <style>
-        /* Global styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        /* Reset & basic */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; }
+        body { background:#fff; color:#374151; }
+        .mx-auto { margin-left:auto; margin-right:auto; }
+
+        /* Layout utilities used in the page */
+        .max-w-7xl { max-width:80rem; }
+        .px-6 { padding-left:1.5rem; padding-right:1.5rem; }
+        .py-12 { padding-top:3rem; padding-bottom:3rem; }
+
+        .grid { display: grid; }
+        .gap-12 { gap:3rem; }
+
+        /* Header/Banner */
+        .top-banner { background:#424c4b; color:#fff; text-align:center; padding:0.6rem 1rem; font-size:0.9rem; }
+
+        header { border-bottom: 1px solid #e5e7eb; }
+        .header-inner { display:flex; align-items:center; justify-content:space-between; padding:1rem 1.5rem; max-width:80rem; margin:0 auto; }
+        .logo { font-size:1.5rem; font-weight:300; color:#1f2937; }
+
+        /* Card / product gallery container: smaller and centered */
+        .card { border-radius:12px; border:1px solid #e6e6e6; background:#fff; box-shadow:0 6px 18px rgba(0,0,0,0.04); padding:1rem; }
+        .product-column { display:flex; flex-direction:column; align-items:center; gap:1rem; max-width:420px; margin:0 auto; }
+
+        /* Main image */
+        .main-image-wrap { width:100%; aspect-ratio:1/1; border-radius:10px; overflow:hidden; background:#f7f7f8; display:flex; align-items:center; justify-content:center; }
+        .main-image { width:100%; height:100%; object-fit:contain; transition: transform .25s ease; }
+        .main-image:hover { transform: scale(1.02); }
+
+        /* Thumbnails: always below main image, arranged in a centered row */
+        .thumbnail-row { display:flex; justify-content:center; gap:0.75rem; width:100%; margin-top:6px; }
+        .thumbnail-container { width:78px; height:78px; border-radius:8px; overflow:hidden; background:#f3f4f6; border:2px solid transparent; cursor:pointer; transition: all .15s ease; }
+        .thumbnail-container:hover { border-color:#4b5563; transform: translateY(-2px); }
+        .thumbnail-container.active { border-color:#111827; box-shadow: 0 3px 8px rgba(0,0,0,0.06); }
+        .thumbnail { width:100%; height:100%; object-fit:cover; display:block; }
+
+        /* Product info column (keeps content readable but not huge) */
+        .product-info { max-width:640px; width:100%; }
+        .brand { font-size:0.8rem; color:#6b7280; margin-bottom:0.5rem; letter-spacing:0.04em; }
+        .title { font-size:1.6rem; font-weight:300; color:#0f1724; margin-bottom:0.5rem; line-height:1.1; }
+        .price { font-size:1.125rem; color:#0f1724; margin-bottom:0.5rem; }
+        .product-id { display:inline-block; background:#f3f4f6; padding:0.4rem 0.8rem; border-radius:8px; font-size:0.85rem; margin-bottom:0.75rem; }
+
+        /* Buttons / inputs */
+        .flex { display:flex; }
+        .items-center { align-items:center; }
+        .gap-4 { gap:1rem; }
+        .btn { border-radius:8px; padding:0.6rem 1rem; font-weight:600; cursor:pointer; border:1px solid transparent; }
+        .btn-outline { background:#fff; border-color:#e5e7eb; color:#111827; }
+        .btn-default { background:#111827; color:#fff; }
+
+        .input { height:2.4rem; border-radius:8px; border:1px solid #d1d5db; padding:0 0.6rem; width:5.5rem; text-align:center; }
+
+        /* Related products grid */
+        .related-grid { display:grid; grid-template-columns:repeat(1,1fr); gap:1rem; }
+        @media (min-width:640px) { .related-grid{ grid-template-columns:repeat(2,1fr);} }
+        @media (min-width:1024px) { .related-grid{ grid-template-columns:repeat(4,1fr);} }
+
+        /* Keep the main product layout as two columns on medium+ screens */
+        .product-grid { display:grid; grid-template-columns: 1fr; gap:2.5rem; }
+        @media (min-width:768px) {
+            /* two columns: left product card, right product info */
+            .product-grid { grid-template-columns: minmax(0,420px) 1fr; align-items:start; }
         }
-        
-        body {
-            background-color: #ffffff;
-            color: #374151;
-        }
-        
-        .min-h-screen {
-            min-height: 100vh;
-        }
-        
-        .flex {
-            display: flex;
-        }
-        
-        .flex-col {
-            flex-direction: column;
-        }
-        
-        .flex-1 {
-            flex: 1;
-        }
-        
-        .items-center {
-            align-items: center;
-        }
-        
-        .justify-between {
-            justify-content: space-between;
-        }
-        
-        .hidden {
-            display: none;
-        }
-        
-        .md-flex {
-            display: none;
-        }
-        
-        .grid {
-            display: grid;
-        }
-        
-        .gap-2 { gap: 0.5rem; }
-        .gap-3 { gap: 0.75rem; }
-        .gap-4 { gap: 1rem; }
-        .gap-6 { gap: 1.5rem; }
-        .gap-8 { gap: 2rem; }
-        .gap-12 { gap: 3rem; }
-        
-        .space-y-2 > * + * { margin-top: 0.5rem; }
-        .space-y-3 > * + * { margin-top: 0.75rem; }
-        .space-y-4 > * + * { margin-top: 1rem; }
-        .space-y-6 > * + * { margin-top: 1.5rem; }
-        
-        .max-w-7xl {
-            max-width: 80rem;
-        }
-        
-        .max-w-xs {
-            max-width: 20rem;
-        }
-        
-        .max-w-md {
-            max-width: 28rem;
-        }
-        
-        .mx-auto {
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
-        .px-4 { padding-left: 1rem; padding-right: 1rem; }
-        .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
-        .px-8 { padding-left: 2rem; padding-right: 2rem; }
-        
-        .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
-        .py-2\.5 { padding-top: 0.625rem; padding-bottom: 0.625rem; }
-        .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
-        .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
-        .py-16 { padding-top: 4rem; padding-bottom: 4rem; }
-        
-        .text-center {
-            text-align: center;
-        }
-        
-        .text-xs { font-size: 0.75rem; line-height: 1rem; }
-        .text-sm { font-size: 0.875rem; line-height: 1.25rem; }
-        .text-base { font-size: 1rem; line-height: 1.5rem; }
-        .text-lg { font-size: 1.125rem; line-height: 1.75rem; }
-        .text-xl { font-size: 1.25rem; line-height: 1.75rem; }
-        .text-2xl { font-size: 1.5rem; line-height: 2rem; }
-        .text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
-        
-        .font-light { font-weight: 300; }
-        .font-medium { font-weight: 500; }
-        
-        .text-white { color: #ffffff; }
-        .text-gray-600 { color: #4b5563; }
-        .text-gray-700 { color: #374151; }
-        .text-gray-800 { color: #1f2937; }
-        .text-gray-900 { color: #111827; }
-        
-        .bg-white { background-color: #ffffff; }
-        .bg-black { background-color: #000000; }
-        .bg-\[\#424c4b\] { background-color: #424c4b; }
-        .bg-\[\#f8f8f8\] { background-color: #f8f8f8; }
-        .bg-\[\#8d644d\]\/10 { background-color: rgba(141, 100, 77, 0.1); }
-        
-        .border { border-width: 1px; border-style: solid; }
-        .border-0 { border-width: 0; }
-        .border-2 { border-width: 2px; }
-        .border-b { border-bottom-width: 1px; }
-        
-        .border-gray-200 { border-color: #e5e7eb; }
-        .border-gray-300 { border-color: #d1d5db; }
-        .border-gray-800 { border-color: #1f2937; }
-        
-        .rounded-full { border-radius: 9999px; }
-        .rounded-lg { border-radius: 0.5rem; }
-        .rounded-md { border-radius: 0.375rem; }
-        
-        .shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
-        
-        .overflow-hidden { overflow: hidden; }
-        
-        .object-contain { object-fit: contain; }
-        .object-cover { object-fit: cover; }
-        
-        .w-4 { width: 1rem; }
-        .w-5 { width: 1.25rem; }
-        .w-10 { width: 2.5rem; }
-        .w-full { width: 100%; }
-        
-        .h-4 { height: 1rem; }
-        .h-5 { height: 1.25rem; }
-        .h-10 { height: 2.5rem; }
-        .h-12 { height: 3rem; }
-        .h-full { height: 100%; }
-        
-        .leading-tight { line-height: 1.25; }
-        .leading-relaxed { line-height: 1.625; }
-        
-        .tracking-wide { letter-spacing: 0.025em; }
-        
-        .mb-2 { margin-bottom: 0.5rem; }
-        .mb-3 { margin-bottom: 0.75rem; }
-        .mb-4 { margin-bottom: 1rem; }
-        .mb-6 { margin-bottom: 1.5rem; }
-        .mb-8 { margin-bottom: 2rem; }
-        
-        .block { display: block; }
-        
-        .inline-flex { display: inline-flex; }
-        
-        .hover\:bg-gray-100:hover { background-color: #f3f4f6; }
-        .hover\:bg-gray-800:hover { background-color: #1f2937; }
-        .hover\:text-gray-900:hover { color: #111827; }
-        .hover\:shadow-md:hover { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
-        
-        .transition-shadow { transition: box-shadow 0.15s ease-in-out; }
-        .transition-transform { transition: transform 0.15s ease-in-out; }
-        .transition-colors { transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out; }
-        
-        .duration-300 { transition-duration: 300ms; }
-        
-        .focus-visible\:outline-none:focus-visible { outline: 2px solid transparent; outline-offset: 2px; }
-        .focus-visible\:ring-2:focus-visible { --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color); --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color); box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000); }
-        .focus-visible\:ring-offset-2:focus-visible { --tw-ring-offset-width: 2px; }
-        
-        .disabled\:pointer-events-none:disabled { pointer-events: none; }
-        .disabled\:opacity-50:disabled { opacity: 0.5; }
-        
-        .underline { text-decoration: underline; }
-        
-        .line-clamp-2 {
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        
-        .min-h-\[2\.5rem\] { min-height: 2.5rem; }
-        
-        .aspect-square { aspect-ratio: 1 / 1; }
-        
-        /* Button variants */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 0.375rem;
-            font-size: 0.875rem;
-            font-weight: 500;
-            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
-            cursor: pointer;
-            border: 1px solid transparent;
-        }
-        
-        .btn:focus-visible {
-            outline: 2px solid transparent;
-            outline-offset: 2px;
-            --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
-            --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
-            box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
-            --tw-ring-offset-width: 2px;
-        }
-        
-        .btn-default {
-            background-color: #000000;
-            color: #ffffff;
-        }
-        
-        .btn-default:hover {
-            background-color: #1f2937;
-        }
-        
-        .btn-outline {
-            border-color: #e5e7eb;
-            background-color: #ffffff;
-            color: #111827;
-        }
-        
-        .btn-outline:hover {
-            background-color: #f9fafb;
-            color: #374151;
-        }
-        
-        .btn-icon {
-            height: 2.5rem;
-            width: 2.5rem;
-            padding: 0;
-        }
-        
-        .btn-default-size {
-            height: 2.5rem;
-            padding: 0.5rem 1rem;
-        }
-        
-        .btn-lg {
-            height: 3rem;
-            padding: 0.5rem 1rem;
-            font-size: 1rem;
-        }
-        
-        /* Input styles */
-        .input {
-            display: flex;
-            height: 2.5rem;
-            width: 100%;
-            border-radius: 0.375rem;
-            border: 1px solid #d1d5db;
-            background-color: #ffffff;
-            padding: 0.5rem 0.75rem;
-            font-size: 0.875rem;
-        }
-        
-        .input:focus {
-            outline: 2px solid transparent;
-            outline-offset: 2px;
-            --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
-            --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
-            box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
-            --tw-ring-offset-width: 2px;
-            border-color: transparent;
-        }
-        
-        /* Card styles */
-        .card {
-            border-radius: 0.5rem;
-            border: 1px solid #e5e7eb;
-            background-color: #ffffff;
-            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-        }
-        
-        /* New product image gallery styles */
-        .product-gallery {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        
-        .main-image-container {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            border-radius: 0.5rem;
-            overflow: hidden;
-            background-color: rgba(141, 100, 77, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .main-image {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            padding: 1rem;
-        }
-        
-        .thumbnail-row {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0.75rem;
-        }
-        
-        .thumbnail-container {
-            aspect-ratio: 1 / 1;
-            border-radius: 0.375rem;
-            overflow: hidden;
-            background-color: rgba(141, 100, 77, 0.1);
-            cursor: pointer;
-            border: 2px solid #d1d5db;
-            transition: border-color 0.2s ease;
-        }
-        
-        .thumbnail-container.active {
-            border-color: #1f2937;
-        }
-        
-        .thumbnail {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            padding: 0.5rem;
-        }
-        
-        .product-id {
-            background-color: #f3f4f6;
-            padding: 0.5rem 1rem;
-            border-radius: 0.375rem;
-            font-size: 0.875rem;
-            display: inline-block;
-            margin-bottom: 1rem;
-        }
-        
-        /* Media queries */
-        @media (min-width: 768px) {
-            .md-flex {
-                display: flex;
-            }
-            
-            .md\:grid-cols-2 {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-            
-            .product-gallery {
-                flex-direction: row;
-                gap: 1.5rem;
-            }
-            
-            .thumbnail-row {
-                grid-template-columns: 1fr;
-                width: 100px;
-            }
-            
-            .main-image-container {
-                flex: 1;
-            }
-        }
-        
-        @media (min-width: 640px) {
-            .sm\:grid-cols-2 {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-        }
-        
-        @media (min-width: 1024px) {
-            .lg\:grid-cols-4 {
-                grid-template-columns: repeat(4, minmax(0, 1fr));
-            }
-        }
+
+        /* small helpers */
+        .text-sm { font-size:0.95rem; color:#4b5563; }
+        .mb-4 { margin-bottom:1rem; }
+        .space-y-4 > * + * { margin-top:1rem; }
+        .p-6 { padding:1.5rem; }
     </style>
 </head>
 <body>
-    <div class="min-h-screen flex flex-col bg-white">
-        <!-- Top Banner -->
-        <div class="bg-[#424c4b] text-white text-center py-2.5 text-sm">
-            Free shipping in South Africa for orders over R1200. Delivery 3 - 5 days from payment.
+    <div class="top-banner">Free shipping in South Africa for orders over R1200. Delivery 3 - 5 days from payment.</div>
+
+    <header>
+        <div class="header-inner">
+            <div class="logo">Greenie</div>
+            <nav class="hidden" aria-hidden="true"></nav>
         </div>
+    </header>
 
-        <!-- Header -->
-        <header class="border-b border-gray-200">
-            <div class="max-w-7xl mx-auto px-6 py-4">
-                <div class="flex items-center justify-between">
-                    <div class="text-2xl font-light text-gray-800">Greenie</div>
+    <main class="py-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <!-- product area: left = image card, right = info -->
+            <div class="product-grid">
 
-                    <nav class="hidden md-flex items-center gap-8 text-sm">
-                        <a href="#" class="text-gray-700 hover:text-gray-900">Home</a>
-                        <a href="#" class="text-gray-700 hover:text-gray-900">Shop</a>
-                        <a href="#" class="text-gray-700 hover:text-gray-900">About us</a>
-                        <a href="#" class="text-gray-700 hover:text-gray-900">News</a>
-                        <a href="#" class="text-gray-700 hover:text-gray-900">Wholesale</a>
-                        <a href="#" class="text-gray-700 hover:text-gray-900">Our factory</a>
-                        <a href="#" class="text-gray-700 hover:text-gray-900">Stockists</a>
-                    </nav>
+                <!-- LEFT: image card (smaller, centered) -->
+                <div class="card product-column">
+                    <div class="product-column-inner" style="width:100%;">
+                        <div class="product-column">
+                            <div class="main-image-wrap">
+                                <img id="main-product-image" class="main-image"
+                                     src="https://ext.same-assets.com/700541728/4199498656.png"
+                                     alt="Fynbos Food Cover - Product View" />
+                            </div>
 
-                    <div class="flex items-center gap-4">
-                        <button class="p-2 hover:bg-gray-100 rounded-full">
-                            <!-- Search Icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-700">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                            </svg>
-                        </button>
-                        <button class="p-2 hover:bg-gray-100 rounded-full">
-                            <!-- User Icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-700">
-                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="12" cy="7" r="4"></circle>
-                            </svg>
-                        </button>
-                        <button class="p-2 hover:bg-gray-100 rounded-full">
-                            <!-- Shopping Cart Icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-700">
-                                <circle cx="9" cy="21" r="1"></circle>
-                                <circle cx="20" cy="21" r="1"></circle>
-                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <!-- Product Section -->
-        <main class="flex-1">
-            <div class="max-w-7xl mx-auto px-6 py-12">
-                <div class="grid md:grid-cols-2 gap-12">
-                    <!-- Product Images -->
-                    <div class="product-gallery">
-                        <div class="main-image-container">
-                            <img
-                                id="main-product-image"
-                                src="https://ext.same-assets.com/700541728/4199498656.png"
-                                alt="Fynbos Food Cover - Product View"
-                                class="main-image"
-                            />
-                        </div>
-                        <div class="thumbnail-row">
-                            <div class="thumbnail-container active" data-index="0">
-                                <img 
-                                    src="https://ext.same-assets.com/700541728/4199498656.png" 
-                                    alt="Fynbos Food Cover - Front View" 
-                                    class="thumbnail"
-                                />
-                            </div>
-                            <div class="thumbnail-container" data-index="1">
-                                <img 
-                                    src="https://ext.same-assets.com/700541728/3813091546.jpeg" 
-                                    alt="Fynbos Food Cover - Side View" 
-                                    class="thumbnail"
-                                />
-                            </div>
-                            <div class="thumbnail-container" data-index="2">
-                                <img 
-                                    src="https://ext.same-assets.com/700541728/1755414100.jpeg" 
-                                    alt="Fynbos Food Cover - In Use" 
-                                    class="thumbnail"
-                                />
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product Info -->
-                    <div class="space-y-6">
-                        <div>
-                            <div class="text-xs text-gray-600 mb-2 tracking-wide">GREENIE</div>
-                            <h1 class="text-3xl font-light text-gray-900 mb-2 leading-tight">
-                                "Fynbos" Food Cover (Artist Collection) - Shaune Rogatschnig
-                            </h1>
-                            <div class="product-id">Product ID: GR-FC-FYNBOS-001</div>
-                            <div class="text-xl text-gray-900 mb-2">R 720.00 ZAR</div>
-                            <div class="text-sm text-gray-600">
-                                Taxes included. <a href="#" class="underline">Shipping</a> calculated at checkout.
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="text-sm text-gray-700 mb-3 block">Quantity</label>
-                            <div class="flex items-center gap-4 max-w-xs">
-                                <button
-                                    id="decrease-quantity"
-                                    class="btn btn-outline btn-icon"
-                                >
-                                    <!-- Minus Icon -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    </svg>
-                                </button>
-                                <input
-                                    id="quantity-input"
-                                    type="number"
-                                    value="1"
-                                    class="input text-center"
-                                />
-                                <button
-                                    id="increase-quantity"
-                                    class="btn btn-outline btn-icon"
-                                >
-                                    <!-- Plus Icon -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <line x1="12" y1="5" x2="12" y2="19"></line>
-                                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="space-y-3">
-                            <button class="btn btn-outline btn-lg w-full">
-                                Add to cart
-                            </button>
-                            <button class="btn btn-default btn-lg w-full">
-                                Buy it now
-                            </button>
-                        </div>
-
-                        <div class="text-sm text-gray-700 space-y-4 leading-relaxed">
-                            <p>
-                                In collaboration with renowned Cape Town artist, Shaune Rogatschnig. Set of four (4) Food Covers.
-                                The most beautiful solution to go green in your home. Our handmade covers are locally manufactured
-                                from 100%, high quality organic cotton.
-                            </p>
-                            <p>
-                                These covers are a great alternative to cling wrap and can be used to keep food fresh and keep
-                                bugs and flies away. They're pretty enough to be used at any dinner table or at the outside braai.
-                            </p>
-                            <p>
-                                The 100% cotton fabric allows for air and steam to escape. All fabrics have been pre-shrunk and
-                                are machine washable. Bright colours may run, so wash separately. Covers are hand stitched and
-                                finished with elastic on the edges to ensure a snug fit around various container sizes.
-                            </p>
-                            <div class="space-y-2">
-                                <p class="font-medium">Our Food Cover Artist Range (set of 4) includes:</p>
-                                <p>
-                                    <strong>Pickle (XS):</strong> The baby of the food covers. Teeny weeny. Can fit bowl size up to 14 cm.
-                                </p>
-                                <p>
-                                    <strong>Dip (S):</strong> Small but versatile. Can fit bowl size up to 20 cm.
-                                </p>
-                                <p>
-                                    <strong>Snack (M):</strong> Perfect for in between sizes. Can fit bowl size up to 25 cm.
-                                </p>
-                                <p>
-                                    <strong>Salad (L):</strong> Can fit bowl size up to 36 cm.
-                                </p>
-                            </div>
-                            <p>
-                                Shaune Rogatschnig is a highly regarded artist from Cape Town, South Africa. Her current artwork
-                                are bold representations of indigenous plant and fynbos landscapes of South Africa. Her work is
-                                dominated by her love for indigenous flora and the way each bloom captures light. For more info
-                                on Shaune and to view more of her beautiful artwork, visit{' '}
-                                <a href="https://www.mybrushwithlife.co.za" class="underline">
-                                    https://www.mybrushwithlife.co.za
-                                </a>
-                            </p>
-                        </div>
-
-                        <button class="flex items-center gap-2 text-sm text-gray-700 hover:text-gray-900">
-                            <!-- Share Icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="18" cy="5" r="3"></circle>
-                                <circle cx="6" cy="12" r="3"></circle>
-                                <circle cx="18" cy="19" r="3"></circle>
-                                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-                                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-                            </svg>
-                            Share
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Related Products -->
-            <div class="bg-[#f8f8f8] py-16">
-                <div class="max-w-7xl mx-auto px-6">
-                    <h2 class="text-3xl font-light text-gray-900 mb-8">You may also like</h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <div class="card overflow-hidden border-0 shadow-sm hover:shadow-md transition-shadow">
-                            <div class="aspect-square bg-white overflow-hidden">
-                                <img
-                                    src="https://ext.same-assets.com/700541728/762039876.jpeg"
-                                    alt="Endangered Species Food Cover (Artist Collection) - Sharon B Designs"
-                                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                                />
-                            </div>
-                            <div class="p-4 bg-white">
-                                <h3 class="text-sm text-gray-900 mb-2 line-clamp-2 min-h-[2.5rem]">Endangered Species Food Cover (Artist Collection) - Sharon B Designs</h3>
-                                <p class="text-sm text-gray-700">R 720.00 ZAR</p>
-                                <div class="text-xs text-gray-500 mt-1">Product ID: GR-FC-ENDANGERED-002</div>
-                            </div>
-                        </div>
-                        <div class="card overflow-hidden border-0 shadow-sm hover:shadow-md transition-shadow">
-                            <div class="aspect-square bg-white overflow-hidden">
-                                <img
-                                    src="https://ext.same-assets.com/700541728/1755414100.jpeg"
-                                    alt='"Save our Ocean" Food Covers (Artist Collection) - Pudding & Pickles'
-                                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                                />
-                            </div>
-                            <div class="p-4 bg-white">
-                                <h3 class="text-sm text-gray-900 mb-2 line-clamp-2 min-h-[2.5rem]">"Save our Ocean" Food Covers (Artist Collection) - Pudding & Pickles</h3>
-                                <p class="text-sm text-gray-700">R 720.00 ZAR</p>
-                                <div class="text-xs text-gray-500 mt-1">Product ID: GR-FC-OCEAN-003</div>
-                            </div>
-                        </div>
-                        <div class="card overflow-hidden border-0 shadow-sm hover:shadow-md transition-shadow">
-                            <div class="aspect-square bg-white overflow-hidden">
-                                <img
-                                    src="https://ext.same-assets.com/700541728/1803906940.jpeg"
-                                    alt="Botanical Food Cover (Artist Collection) - Kim Black"
-                                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                                />
-                            </div>
-                            <div class="p-4 bg-white">
-                                <h3 class="text-sm text-gray-900 mb-2 line-clamp-2 min-h-[2.5rem]">Botanical Food Cover (Artist Collection) - Kim Black</h3>
-                                <p class="text-sm text-gray-700">R 720.00 ZAR</p>
-                                <div class="text-xs text-gray-500 mt-1">Product ID: GR-FC-BOTANICAL-004</div>
-                            </div>
-                        </div>
-                        <div class="card overflow-hidden border-0 shadow-sm hover:shadow-md transition-shadow">
-                            <div class="aspect-square bg-white overflow-hidden">
-                                <img
-                                    src="https://ext.same-assets.com/700541728/3466712465.jpeg"
-                                    alt="Food Covers Shweshwe (Set of 6)"
-                                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                                />
-                            </div>
-                            <div class="p-4 bg-white">
-                                <h3 class="text-sm text-gray-900 mb-2 line-clamp-2 min-h-[2.5rem]">Food Covers Shweshwe (Set of 6)</h3>
-                                <p class="text-sm text-gray-700">R 630.00 ZAR</p>
-                                <div class="text-xs text-gray-500 mt-1">Product ID: GR-FC-SHWESHWE-005</div>
+                            <!-- Thumbnails -> ALWAYS BELOW the main image -->
+                            <div class="thumbnail-row" role="list">
+                                <div class="thumbnail-container active" data-index="0" role="listitem">
+                                    <img class="thumbnail" src="https://ext.same-assets.com/700541728/4199498656.png" alt="Front view">
+                                </div>
+                                <div class="thumbnail-container" data-index="1" role="listitem">
+                                    <img class="thumbnail" src="https://ext.same-assets.com/700541728/3813091546.jpeg" alt="Side view">
+                                </div>
+                                <div class="thumbnail-container" data-index="2" role="listitem">
+                                    <img class="thumbnail" src="https://ext.same-assets.com/700541728/1755414100.jpeg" alt="In use">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Newsletter -->
-            <div class="bg-white py-16">
-                <div class="max-w-md mx-auto px-6 text-center">
-                    <h2 class="text-2xl font-light text-gray-900 mb-6">Subscribe to our emails</h2>
-                    <div class="flex gap-2">
-                        <input
-                            type="email"
-                            placeholder="Email"
-                            class="input flex-1"
-                        />
-                        <button class="btn btn-default px-6">
-                            →
-                        </button>
+                <!-- RIGHT: product information -->
+                <div class="product-info">
+                    <div class="brand">GREENIE</div>
+                    <h1 class="title">"Fynbos" Food Cover (Artist Collection) - Shaune Rogatschnig</h1>
+                    <div class="product-id">Product ID: GR-FC-FYNBOS-001</div>
+                    <div class="price mb-4">R 720.00 ZAR</div>
+                    <div class="text-sm mb-4">Taxes included. <a href="#" class="text-sm">Shipping</a> calculated at checkout.</div>
+
+                    <div class="mb-4">
+                        <label class="text-sm" for="quantity">Quantity</label>
+                        <div class="flex items-center gap-4" style="margin-top:8px;">
+                            <button id="decrease-quantity" class="btn btn-outline" style="width:44px;">−</button>
+                            <input id="quantity-input" class="input" type="number" value="1" min="1" />
+                            <button id="increase-quantity" class="btn btn-outline" style="width:44px;">+</button>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4 mb-4">
+                        <button class="btn btn-default" style="width:100%;">Buy it now</button>
+                        <button class="btn btn-outline" style="width:100%;">Add to cart</button>
+                    </div>
+
+                    <div class="text-sm space-y-4">
+                        <p>In collaboration with renowned Cape Town artist, Shaune Rogatschnig. Set of four (4) Food Covers. The most beautiful solution to go green in your home. Our handmade covers are locally manufactured from 100% high quality organic cotton.</p>
+                        <p>The 100% cotton fabric allows for air and steam to escape. All fabrics have been pre-shrunk and are machine washable. Bright colours may run, so wash separately. Covers are hand stitched and finished with elastic on the edges to ensure a snug fit around various container sizes.</p>
+                        <p class="font-medium">Our Food Cover Artist Range (set of 4) includes:</p>
+                        <ul class="text-sm">
+                            <li><strong>Pickle (XS):</strong> up to 14 cm.</li>
+                            <li><strong>Dip (S):</strong> up to 20 cm.</li>
+                            <li><strong>Snack (M):</strong> up to 25 cm.</li>
+                            <li><strong>Salad (L):</strong> up to 36 cm.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </main>
-    </div>
+
+            <!-- related products (unchanged) -->
+            <section style="margin-top:3rem;">
+                <h2 style="font-size:1.4rem; font-weight:300; margin-bottom:1rem;">You may also like</h2>
+                <div class="related-grid">
+                    <!-- simple placeholders, keep your original cards if preferred -->
+                    <div class="card p-6">
+                        <img style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:8px;" src="https://ext.same-assets.com/700541728/762039876.jpeg" alt="related">
+                        <div style="margin-top:0.8rem; font-size:0.95rem;">Endangered Species Food Cover - R720</div>
+                    </div>
+                    <div class="card p-6">
+                        <img style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:8px;" src="https://ext.same-assets.com/700541728/1755414100.jpeg" alt="related">
+                        <div style="margin-top:0.8rem; font-size:0.95rem;">Save our Ocean Food Covers - R720</div>
+                    </div>
+                    <div class="card p-6">
+                        <img style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:8px;" src="https://ext.same-assets.com/700541728/1803906940.jpeg" alt="related">
+                        <div style="margin-top:0.8rem; font-size:0.95rem;">Botanical Food Cover - R720</div>
+                    </div>
+                    <div class="card p-6">
+                        <img style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:8px;" src="https://ext.same-assets.com/700541728/3466712465.jpeg" alt="related">
+                        <div style="margin-top:0.8rem; font-size:0.95rem;">Shweshwe Food Covers - R630</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
 
     <script>
-        // JavaScript for interactive functionality
+        // Quantity buttons
         document.addEventListener('DOMContentLoaded', function() {
-            // Quantity functionality
-            const quantityInput = document.getElementById('quantity-input');
-            const decreaseButton = document.getElementById('decrease-quantity');
-            const increaseButton = document.getElementById('increase-quantity');
-            
-            decreaseButton.addEventListener('click', function() {
-                let currentValue = parseInt(quantityInput.value) || 1;
-                if (currentValue > 1) {
-                    quantityInput.value = currentValue - 1;
-                }
+            const qtyInput = document.getElementById('quantity-input');
+            const dec = document.getElementById('decrease-quantity');
+            const inc = document.getElementById('increase-quantity');
+
+            dec.addEventListener('click', () => {
+                let v = parseInt(qtyInput.value) || 1;
+                if(v > 1) qtyInput.value = v - 1;
             });
-            
-            increaseButton.addEventListener('click', function() {
-                let currentValue = parseInt(quantityInput.value) || 1;
-                quantityInput.value = currentValue + 1;
+            inc.addEventListener('click', () => {
+                let v = parseInt(qtyInput.value) || 1;
+                qtyInput.value = v + 1;
             });
-            
-            quantityInput.addEventListener('change', function() {
-                let value = parseInt(this.value) || 1;
-                if (value < 1) {
-                    this.value = 1;
-                }
+            qtyInput.addEventListener('input', () => {
+                if(qtyInput.value === '' || parseInt(qtyInput.value) < 1) qtyInput.value = 1;
             });
-            
-            // Image selection functionality
-            const mainProductImage = document.getElementById('main-product-image');
-            const thumbnailContainers = document.querySelectorAll('.thumbnail-container');
-            
-            thumbnailContainers.forEach(container => {
-                container.addEventListener('click', function() {
-                    const imageSrc = this.querySelector('img').src;
-                    const altText = this.querySelector('img').alt;
-                    
-                    // Update main image
-                    mainProductImage.src = imageSrc;
-                    mainProductImage.alt = altText;
-                    
-                    // Update active thumbnail
-                    thumbnailContainers.forEach(cont => {
-                        cont.classList.remove('active');
-                    });
-                    
+
+            // Image gallery behaviour
+            const mainImage = document.getElementById('main-product-image');
+            const thumbs = document.querySelectorAll('.thumbnail-container');
+
+            thumbs.forEach(t => {
+                t.addEventListener('click', function() {
+                    // swap main image src/alt
+                    const img = this.querySelector('img');
+                    if(img && img.src) {
+                        mainImage.src = img.src;
+                        mainImage.alt = img.alt || mainImage.alt;
+                    }
+                    // update active class
+                    thumbs.forEach(x => x.classList.remove('active'));
                     this.classList.add('active');
                 });
             });
