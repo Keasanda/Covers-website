@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Darling Sew-cial</title>
+    <style>
+        /* CSS Variables based on your design system - Black & White Theme */
+        :root {
+            --background: 0 0% 100%; /* White */
+            --foreground: 0 0% 0%; /* Black */
+            --card: 0 0% 100%; /* White */
+            --card-foreground: 0 0% 0%; /* Black */
+            --primary: 0 0% 0%; /* Black */
+            --primary-foreground: 0 0% 100%; /* White */
+            --secondary: 0 0% 96%; /* Light Grey */
+            --secondary-foreground: 0 0% 0%; /* Black */
+            --muted: 0 0% 94%; /* Light Grey */
+            --muted-foreground: 0 0% 45%; /* Dark Grey */
+            --accent: 0 0% 0%; /* Black */
+            --accent-foreground: 0 0% 100%; /* White */
+            --destructive: 0 84.2% 60.2%;
+            --destructive-foreground: 0 0% 100%;
+            --border: 0 0% 90%; /* Light Grey */
+            --input: 0 0% 90%; /* Light Grey */
+            --ring: 0 0% 0%; /* Black */
+            --radius: 0.375rem;
+            --announcement: 0 0% 0%; /* Black */
+            --announcement-foreground: 0 0% 100%; /* White */
+        }
+
+        /* Global styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            border-color: hsl(var(--border));
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: hsl(var(--background));
+            color: hsl(var(--foreground));
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Announcement Bar */
+        .announcement-bar {
+            background-color: hsl(var(--announcement));
+            color: hsl(var(--announcement-foreground));
+        }
+
+        .announcement-content {
+            text-align: center;
+            font-size: 0.875rem;
+            padding: 0.5rem 1rem;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: hsl(var(--background));
+            border-bottom: 1px solid hsl(var(--border));
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 4rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: hsl(var(--primary));
+        }
+
+        nav {
+            display: none;
+        }
+
+        .nav-link {
+            font-size: 0.875rem;
+            color: hsl(var(--foreground));
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: hsl(var(--primary));
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .icon-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: hsl(var(--foreground));
+        }
+
+        .icon-button:hover {
+            background-color: hsl(var(--secondary));
+        }
+
+        .icon {
+            height: 1.25rem;
+            width: 1.25rem;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 4rem 0;
+            background-color: hsl(var(--background));
+        }
+
+        .about-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .about-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: hsl(var(--primary));
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .about-subtitle {
+            font-size: 1.25rem;
+            color: hsl(var(--muted-foreground));
+            text-align: center;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .team-image {
+            width: 100%;
+            max-width: 500px;
+            height: 400px;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            background-color: hsl(var(--muted));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .team-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        .story-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: hsl(var(--primary));
+            margin-bottom: 0.5rem;
+        }
+
+        .story-text {
+            font-size: 1.125rem;
+            color: hsl(var(--foreground));
+            line-height: 1.7;
+        }
+
+        .mission-highlight {
+            font-weight: bold;
+            color: hsl(var(--primary));
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .value-card {
+            background-color: hsl(var(--secondary));
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+        }
+
+        .value-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: hsl(var(--primary));
+            margin-bottom: 0.5rem;
+        }
+
+        .founder-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid hsl(var(--border));
+        }
+
+        .founder-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .founder-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: hsl(var(--primary));
+        }
+
+        .founder-role {
+            font-size: 1rem;
+            color: hsl(var(--muted-foreground));
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-button {
+            display: none;
+        }
+
+        /* Media Queries */
+        @media (min-width: 768px) {
+            nav {
+                display: flex;
+                align-items: center;
+                gap: 2rem;
+            }
+            
+            .about-title {
+                font-size: 3rem;
+            }
+            
+            .values-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .founder-section {
+                flex-direction: row;
+                align-items: flex-start;
+                gap: 2rem;
+            }
+            
+            .founder-info {
+                flex: 1;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .mobile-menu-button {
+                display: flex;
+            }
+            
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: hsl(var(--background));
+                border-bottom: 1px solid hsl(var(--border));
+                flex-direction: column;
+                padding: 1rem;
+                display: none;
+            }
+            
+            nav.active {
+                display: flex;
+            }
+            
+            .team-image {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        <div class="container">
+            <p class="announcement-content">
+                Free shipping for orders over R1200. Delivery 3 - 5 days from payment.
+            </p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-container">
+                <h1 class="logo">Darling Sew-cial</h1>
+
+                <!-- Navigation -->
+                <nav id="mainNav">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="#shop" class="nav-link">Shop</a>
+                    <a href="#about" class="nav-link">About us</a>
+                    <a href="#news" class="nav-link">News</a>
+                    <a href="#wholesale" class="nav-link">Wholesale</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-button icon-button" id="menuButton">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+
+                <!-- Header Icons -->
+                <div class="header-actions">
+                    <button class="icon-button">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
+                    <button class="icon-button">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </button>
+                    <button class="icon-button">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-container">
+                <h2 class="about-title">Our Story</h2>
+                <p class="about-subtitle">From a kitchen table to a community of makers creating sustainable alternatives</p>
+                
+                <div class="team-image">
+                    <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="The Darling Sew-cial Team" class="team-photo">
+                </div>
+                
+                <div class="about-content">
+                    <div class="story-section">
+                        <div>
+                            <h3 class="section-title">Our Beginning</h3>
+                            <p class="story-text">
+                                Darling Sew-cial was born from a need to care for my family, waste less, and create something meaningful. Inspired by my mom's 2007 innovation of sewing bowl covers (a modern take on the old-fashioned doiley), I continued her legacy during the 2020 lockdown.
+                            </p>
+                            <p class="story-text">
+                                As a single mom of two, I started sewing from my kitchen table — not just to get by, but to build something with purpose. What began as a way to reduce single-use plastic evolved into a growing community and business that now creates flexible work for women in similar situations.
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="section-title">What We Create</h3>
+                            <p class="story-text">
+                                We make beautiful, reusable bowl covers that eliminate the need for plastic clingwrap. Each cover is washable, reusable, and made with care — just like my mom's were.
+                            </p>
+                            <p class="story-text">
+                                We offer two thoughtfully designed ranges:
+                            </p>
+                            <ul class="story-text" style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                                <li><span class="mission-highlight">Lined</span> — Waterproof, perfect for storing leftovers in the fridge</li>
+                                <li><span class="mission-highlight">Unlined</span> — Made from 100% cotton, ideal for covering food during prep or on the table</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 class="section-title">Our Mission & Vision</h3>
+                            <p class="story-text">
+                                Our mission is to make sustainable living simple, beautiful, and accessible — one handmade bowl cover at a time. We're committed to reducing plastic waste while creating dignified, flexible work opportunities for women.
+                            </p>
+                            <p class="story-text">
+                                We envision a world where handmade, sustainable choices are part of everyday life, and where reducing waste feels natural. We believe small, thoughtful actions can lead to lasting change.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="section-title">Our Values</h3>
+                        <div class="values-grid">
+                            <div class="value-card">
+                                <h4 class="value-title">Focus on Local</h4>
+                                <p class="story-text">We source fabrics locally and create opportunities for women in our own communities, keeping our impact close to home.</p>
+                            </div>
+                            <div class="value-card">
+                                <h4 class="value-title">Accessible & Affordable</h4>
+                                <p class="story-text">We believe sustainable choices shouldn't be a privilege. Our products are handmade with care yet remain affordable.</p>
+                            </div>
+                            <div class="value-card">
+                                <h4 class="value-title">Quality Craftsmanship</h4>
+                                <p class="story-text">We source materials from reputable local suppliers and maintain high standards of workmanship in every piece.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="founder-section">
+                        <div class="team-image" style="max-width: 300px;">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" 
+                                 alt="Michelle Williams, Founder" class="team-photo">
+                        </div>
+                        <div class="founder-info">
+                            <h3 class="founder-name">Michelle Williams</h3>
+                            <p class="founder-role">Founder & Creator</p>
+                            <p class="story-text">
+                                Growing up in Cape Town during the height of the textile industry, I was surrounded by fabric, color, and craftsmanship. From making my first scrunchie at age 7, I knew creating was where I belonged.
+                            </p>
+                            <p class="story-text">
+                                There's always more to learn, and I welcome the growth still to come. This is just the beginning of our journey.
+                            </p>
+                            <p class="story-text" style="margin-top: 1rem; font-style: italic;">
+                                Thank you for supporting this journey. Let's get sewcial. 🧵
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.querySelector('.mobile-menu-button');
+            const nav = document.querySelector('nav');
+            
+            if (mobileMenuButton && nav) {
+                mobileMenuButton.addEventListener('click', function() {
+                    nav.classList.toggle('active');
+                });
+            }
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('nav') && !event.target.closest('.mobile-menu-button')) {
+                    nav.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
