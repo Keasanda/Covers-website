@@ -61,6 +61,8 @@
             font-size: 0.875rem;
             padding: 0.5rem 1rem;
         }
+
+
         
         /* Header */
         header {
@@ -78,12 +80,24 @@
             height: 4rem;
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: hsl(var(--primary));
-        }
+        /* Logo Image Styles */
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
 
+.logo-image {
+    height: 4rem; /* Same height as your original text logo */
+    width: 12.5rem;  /* Maintain aspect ratio */
+    object-fit: contain;
+}
+
+/* Optional: Add hover effect */
+.logo-image:hover {
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
         nav {
             display: none;
         }
@@ -223,7 +237,6 @@
     </style>
 </head>
 <body>
-    <!-- Announcement Bar -->
     <div class="announcement-bar">
         <div class="container">
             <p class="announcement-content">
@@ -232,13 +245,16 @@
         </div>
     </div>
 
-    <!-- Header -->
     <header>
         <div class="container">
             <div class="header-container">
-                <h1 class="logo">Darling Sew-cial</h1>
+               <!-- Updated Logo with Image -->
+            <a href="/" class="logo">
+                <img src="https://i.imgur.com/FUjP0Uy.jpg" 
+                     alt="Darling Sew-cial Logo" 
+                     class="logo-image">
+            </a>
 
-                <!-- Navigation -->
                 <nav id="mainNav">
                     <a href="index.html" class="nav-link">Home</a>
                     <a href="#shop" class="nav-link">Shop</a>
@@ -247,7 +263,6 @@
                     <a href="#wholesale" class="nav-link">Wholesale</a>
                 </nav>
 
-                <!-- Mobile Menu Button -->
                 <button class="mobile-menu-button icon-button" id="menuButton">
                     <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -256,7 +271,6 @@
                     </svg>
                 </button>
 
-                <!-- Header Icons -->
                 <div class="header-actions">
                     <button class="icon-button">
                         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -284,41 +298,28 @@
 
     <main class="py-12">
         <div class="max-w-7xl mx-auto px-6">
-            <!-- product area: left = image card, right = info -->
             <div class="product-grid">
 
-                <!-- LEFT: image card (smaller, centered) -->
                 <div class="card product-column">
                     <div class="product-column-inner" style="width:100%;">
                         <div class="product-column">
                             <div class="main-image-wrap">
                                 <img id="main-product-image" class="main-image"
-                                     src="https://ext.same-assets.com/700541728/4199498656.png"
-                                     alt="Fynbos Food Cover - Product View" />
+                                     src=""
+                                     alt="Product Image" />
                             </div>
 
-                            <!-- Thumbnails -> ALWAYS BELOW the main image -->
-                            <div class="thumbnail-row" role="list">
-                                <div class="thumbnail-container active" data-index="0" role="listitem">
-                                    <img class="thumbnail" src="https://ext.same-assets.com/700541728/4199498656.png" alt="Front view">
+                            <div id="thumbnail-gallery" class="thumbnail-row" role="list">
                                 </div>
-                                <div class="thumbnail-container" data-index="1" role="listitem">
-                                    <img class="thumbnail" src="https://ext.same-assets.com/700541728/3813091546.jpeg" alt="Side view">
-                                </div>
-                                <div class="thumbnail-container" data-index="2" role="listitem">
-                                    <img class="thumbnail" src="https://ext.same-assets.com/700541728/1755414100.jpeg" alt="In use">
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- RIGHT: product information -->
                 <div class="product-info">
                     <div class="brand">Darling Sew-cial</div>
-                    <h1 class="title">"Fynbos" Food Cover (Artist Collection) - Shaune Rogatschnig</h1>
+                    <h1 id="product-title" class="title">Product Title</h1>
                    
-                    <div class="price mb-4">R 720.00 ZAR</div>
+                    <div id="product-price" class="price mb-4">R 0.00 ZAR</div>
                     <div class="text-sm mb-4">Taxes included. <a href="#" class="text-sm">Shipping</a> calculated at checkout.</div>
 
                     <div class="mb-4">
@@ -335,61 +336,47 @@
                         <button class="btn btn-outline" style="width:100%;">Add to cart</button>
                     </div>
 
-                    <div class="text-sm space-y-4">
-                        <p>In collaboration with renowned Cape Town artist, Shaune Rogatschnig. Set of four (4) Food Covers. The most beautiful solution to go green in your home. Our handmade covers are locally manufactured from 100% high quality organic cotton.</p>
-                        <p>The 100% cotton fabric allows for air and steam to escape. All fabrics have been pre-shrunk and are machine washable. Bright colours may run, so wash separately. Covers are hand stitched and finished with elastic on the edges to ensure a snug fit around various container sizes.</p>
-                        <p class="font-medium">Our Food Cover Artist Range (set of 4) includes:</p>
-                        <ul class="text-sm">
-                            <li><strong>Pickle (XS):</strong> up to 14 cm.</li>
-                            <li><strong>Dip (S):</strong> up to 20 cm.</li>
-                            <li><strong>Snack (M):</strong> up to 25 cm.</li>
-                            <li><strong>Salad (L):</strong> up to 36 cm.</li>
-                        </ul>
-                    </div>
+                    <div id="product-description" class="text-sm space-y-4">
+                       </div>
                 </div>
             </div>
 
-            <!-- related products (unchanged) -->
-           <section style="margin-top:3rem;">
+            <section style="margin-top:3rem;">
     <h2 style="font-size:1.4rem; font-weight:300; margin-bottom:1rem;">You may also like</h2>
     <div class="related-grid">
-        <!-- Related Product 1 -->
         <div class="card p-6">
             <a href="product.html?id=1" style="text-decoration:none; color:inherit;">
                 <img style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:8px;" 
-                     src="https://ext.same-assets.com/700541728/762039876.jpeg" 
-                     alt="Endangered Species Food Cover - R720">
-                <div style="margin-top:0.8rem; font-size:0.95rem;">Endangered Species Food Cover - R720</div>
+                     src="https://imgur.com/VufUQ7I.png" 
+                     alt="Protea Whisper Food Cover - R350">
+                <div style="margin-top:0.8rem; font-size:0.95rem;">Protea Whisper Cover - R350</div>
             </a>
         </div>
 
-        <!-- Related Product 2 -->
         <div class="card p-6">
             <a href="product.html?id=2" style="text-decoration:none; color:inherit;">
                 <img style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:8px;" 
-                     src="https://ext.same-assets.com/700541728/1755414100.jpeg" 
-                     alt="Save our Ocean Food Covers - R720">
-                <div style="margin-top:0.8rem; font-size:0.95rem;">Save our Ocean Food Covers - R720</div>
+                     src="https://imgur.com/qsf7omw.png" 
+                     alt="Protea Fynbos Food Covers - R250">
+                <div style="margin-top:0.8rem; font-size:0.95rem;">Protea Fynbos Cover - R250</div>
             </a>
         </div>
 
-        <!-- Related Product 3 -->
         <div class="card p-6">
             <a href="product.html?id=3" style="text-decoration:none; color:inherit;">
                 <img style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:8px;" 
-                     src="https://ext.same-assets.com/700541728/1803906940.jpeg" 
-                     alt="Botanical Food Cover - R720">
-                <div style="margin-top:0.8rem; font-size:0.95rem;">Botanical Food Cover - R720</div>
+                     src="https://imgur.com/edZ0wOH.png" 
+                     alt="Guinea Out of Africa Cover - R250">
+                <div style="margin-top:0.8rem; font-size:0.95rem;">Guinea Out of Africa Cover - R250</div>
             </a>
         </div>
 
-        <!-- Related Product 4 -->
         <div class="card p-6">
             <a href="product.html?id=4" style="text-decoration:none; color:inherit;">
                 <img style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:8px;" 
-                     src="https://ext.same-assets.com/700541728/3466712465.jpeg" 
-                     alt="Shweshwe Food Covers - R630">
-                <div style="margin-top:0.8rem; font-size:0.95rem;">Shweshwe Food Covers - R630</div>
+                     src="https://images.unsplash.com/photo-1583947215259-38e31be8751f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                     alt="Bamboo Utensil Set - R380">
+                <div style="margin-top:0.8rem; font-size:0.95rem;">Bamboo Utensil Set - R380</div>
             </a>
         </div>
     </div>
@@ -399,8 +386,164 @@
     </main>
 
     <script>
-        // Mobile menu functionality
+        // === PRODUCT DATA STORE (Easily add and remove products here) ===
+        const productData = [
+            {
+                id: 1,
+                title: 'Reusable Waterproof/ Cotton bowl covers - set of Protea Whisper',
+                price: '350.00',
+                description: '<p>A beautiful and sustainable set of reusable bowl covers featuring the "Protea Whisper" design. These covers are handmade from high quality organic cotton, with a waterproof inner lining to keep your food fresh.</p><p class="font-medium">The set of 3 includes:</p><ul><li><strong>Pickle (XS):</strong> up to 14 cm.</li><li><strong>Dip (S):</strong> up to 20 cm.</li><li><strong>Snack (M):</strong> up to 25 cm.</li><li><strong>Salad (L):</strong> up to 36 cm.</li></ul>',
+                images: [
+                    { url: 'https://imgur.com/VufUQ7I.png', alt: 'Protea Whisper set - folded' },
+                    { url: 'https://imgur.com/mCwOqPb.png', alt: 'Protea Whisper set - bowls' }, // New Placeholder Image
+                    { url: 'https://imgur.com/Knah4n2.png', alt: 'Protea Whisper close-up' } // New Placeholder Image
+                ]
+            },
+            {
+                id: 2,
+                title: 'Reusable Cotton bowl covers - Set of 3 Protea Fynbos',
+                price: '250.00',
+                description: '<p>Go green with this lovely set of 3 pure cotton bowl covers in the vibrant "Protea Fynbos" pattern. Perfect for proofing dough, covering leftovers, or picnics. Allows food to breathe.</p><p class="font-medium">The set of 3 includes:</p><ul><li><strong>Dip (S):</strong> up to 20 cm.</li><li><strong>Snack (M):</strong> up to 25 cm.</li><li><strong>Salad (L):</strong> up to 36 cm.</li></ul>',
+                images: [
+                    { url: 'https://imgur.com/qsf7omw.png', alt: 'Protea Fynbos set - folded' },
+                    { url: 'https://imgur.com/8kafpK6.png', alt: 'Protea Fynbos - on a bowl' },
+                    { url: 'https://imgur.com/kQ1wP4p.png', alt: 'Protea Fynbos - on a bowl' }// New Placeholder Image
+                ]
+            },
+            {
+                id: 3,
+                title: 'Reusable Cotton bowl covers - Set of 3 Guinea Out of Africa',
+                price: '250.00',
+                description: '<p>A striking set of 3 breathable cotton bowl covers featuring the iconic "Guinea Out of Africa" print. A stylish and eco-friendly alternative to plastic wrap for your kitchen.</p><p class="font-medium">The set of 3 includes:</p><ul><li><strong>Dip (S):</strong> up to 20 cm.</li><li><strong>Snack (M):</strong> up to 25 cm.</li><li><strong>Salad (L):</strong> up to 36 cm.</li></ul>',
+                images: [
+                    { url: 'https://imgur.com/edZ0wOH.png', alt: 'Guinea Out of Africa set - folded' },
+                    { url: 'https://imgur.com/qChwf0s.png', alt: 'Guinea Out of Africa - close-up' },
+                    { url: 'https://imgur.com/90TasAT.png', alt: 'Guinea Out of Africa - close-up' } // New Placeholder Image
+                ]
+            },
+            {
+                id: 4,
+                title: 'Bamboo Utensil Set with Organic Cotton Wrap',
+                price: '380.00',
+                description: '<p>Take your sustainability journey on the road with this lightweight and durable bamboo utensil set, neatly packaged in an organic cotton wrap. Includes a fork, spoon, knife, and straw with a cleaner.</p>',
+                images: [
+                    { url: 'https://images.unsplash.com/photo-1583947215259-38e31be8751f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80', alt: 'Bamboo Utensil Set rolled up' },
+                ]
+            },
+            {
+                id: 5,
+                title: 'Organic Cotton Produce Bags - Set of 5',
+                price: '320.00',
+                description: '<p>Say goodbye to single-use plastic produce bags. This set of 5 reusable, organic cotton mesh bags is perfect for fruits, vegetables, and bulk goods. They are lightweight and machine washable.</p>',
+                images: [
+                    { url: 'https://images.unsplash.com/photo-1584302179602-e4819bb92daa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80', alt: 'Organic Cotton Produce Bags filled with vegetables' },
+                ]
+            },
+             {
+                id: 6,
+                title: 'Stainless Steel Straw Set with Cleaner',
+                price: '280.00',
+                description: '<p>A durable and eco-friendly set of 4 stainless steel straws (2 bent, 2 straight), complete with a cleaning brush and a canvas pouch. The perfect alternative to plastic straws.</p>',
+                images: [
+                    { url: 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80', alt: 'Stainless Steel Straw Set' },
+                ]
+            }
+        ];
+        // === END OF PRODUCT DATA STORE ===
+
+
+        // === Main Product Loader Function ===
+        function loadProductDetails(productId) {
+            const product = productData.find(p => p.id === parseInt(productId));
+
+            if (!product) {
+                // Handle case where product is not found (e.g., redirect to 404 or product list)
+                document.getElementById('product-title').textContent = 'Product Not Found';
+                document.getElementById('product-price').textContent = 'R N/A ZAR';
+                document.getElementById('product-description').innerHTML = '<p>The requested product could not be found. Please check the product ID.</p>';
+                document.getElementById('main-product-image').src = '';
+                document.getElementById('main-product-image').alt = '';
+                document.getElementById('thumbnail-gallery').innerHTML = '';
+                return;
+            }
+
+            // Update Page Title
+            document.title = `Darling Sew-cial - ${product.title}`;
+
+            // Update Product Info
+            document.getElementById('product-title').textContent = product.title;
+            document.getElementById('product-price').textContent = `R ${parseFloat(product.price).toFixed(2)} ZAR`;
+            document.getElementById('product-description').innerHTML = product.description;
+
+            // Update Main Image
+            const mainImage = document.getElementById('main-product-image');
+            mainImage.src = product.images[0].url;
+            mainImage.alt = product.images[0].alt;
+
+            // Generate Thumbnails
+            const thumbnailGallery = document.getElementById('thumbnail-gallery');
+            thumbnailGallery.innerHTML = ''; // Clear existing thumbnails
+
+            product.images.forEach((image, index) => {
+                const thumbContainer = document.createElement('div');
+                thumbContainer.className = 'thumbnail-container' + (index === 0 ? ' active' : '');
+                thumbContainer.setAttribute('data-index', index);
+                thumbContainer.setAttribute('role', 'listitem');
+                
+                const thumbImg = document.createElement('img');
+                thumbImg.className = 'thumbnail';
+                thumbImg.src = image.url;
+                thumbImg.alt = image.alt;
+                
+                thumbContainer.appendChild(thumbImg);
+                thumbnailGallery.appendChild(thumbContainer);
+            });
+
+            // Re-initialise thumbnail click listeners for the new elements
+            initThumbnailGallery();
+        }
+
+        // === Thumbnail Gallery Initializer ===
+        function initThumbnailGallery() {
+            const mainImage = document.getElementById('main-product-image');
+            const thumbs = document.querySelectorAll('#thumbnail-gallery .thumbnail-container');
+
+            thumbs.forEach(t => {
+                t.removeEventListener('click', handleThumbnailClick); // Remove existing listener to prevent duplicates
+                t.addEventListener('click', handleThumbnailClick);
+            });
+        }
+        
+        function handleThumbnailClick() {
+            const mainImage = document.getElementById('main-product-image');
+            const thumbs = document.querySelectorAll('#thumbnail-gallery .thumbnail-container');
+            const img = this.querySelector('img');
+            
+            if(img && img.src) {
+                mainImage.src = img.src;
+                mainImage.alt = img.alt || mainImage.alt;
+            }
+            
+            thumbs.forEach(x => x.classList.remove('active'));
+            this.classList.add('active');
+        }
+
+
+        // === Document Ready & Event Handlers ===
         document.addEventListener('DOMContentLoaded', function() {
+            // 1. Get Product ID from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+            
+            // 2. Load the product details
+            if (productId) {
+                loadProductDetails(productId);
+            } else {
+                // If no ID is provided, load product 1 by default
+                loadProductDetails(1); 
+            }
+            
+            // 3. Mobile menu functionality (No Change)
             const mobileMenuButton = document.querySelector('.mobile-menu-button');
             const nav = document.querySelector('nav');
             
@@ -410,14 +553,13 @@
                 });
             }
             
-            // Close menu when clicking outside
             document.addEventListener('click', function(event) {
                 if (!event.target.closest('nav') && !event.target.closest('.mobile-menu-button')) {
                     nav.classList.remove('active');
                 }
             });
             
-            // Quantity buttons
+            // 4. Quantity buttons (No Change)
             const qtyInput = document.getElementById('quantity-input');
             const dec = document.getElementById('decrease-quantity');
             const inc = document.getElementById('increase-quantity');
@@ -432,24 +574,6 @@
             });
             qtyInput.addEventListener('input', () => {
                 if(qtyInput.value === '' || parseInt(qtyInput.value) < 1) qtyInput.value = 1;
-            });
-
-            // Image gallery behaviour
-            const mainImage = document.getElementById('main-product-image');
-            const thumbs = document.querySelectorAll('.thumbnail-container');
-
-            thumbs.forEach(t => {
-                t.addEventListener('click', function() {
-                    // swap main image src/alt
-                    const img = this.querySelector('img');
-                    if(img && img.src) {
-                        mainImage.src = img.src;
-                        mainImage.alt = img.alt || mainImage.alt;
-                    }
-                    // update active class
-                    thumbs.forEach(x => x.classList.remove('active'));
-                    this.classList.add('active');
-                });
             });
         });
     </script>
