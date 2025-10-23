@@ -78,11 +78,24 @@
             height: 4rem;
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: hsl(var(--primary));
-        }
+        /* Logo Image Styles */
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-image {
+    height: 4rem; /* Same height as your original text logo */
+    width: 12.5rem;  /* Maintain aspect ratio */
+    object-fit: contain;
+}
+
+/* Optional: Add hover effect */
+.logo-image:hover {
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
 
         nav {
             display: none;
@@ -326,7 +339,11 @@
     <header>
         <div class="container">
             <div class="header-container">
-                <h1 class="logo">Darling Sew-cial</h1>
+           <a href="/" class="logo">
+                <img src="https://i.imgur.com/FUjP0Uy.jpg" 
+                     alt="Darling Sew-cial Logo" 
+                     class="logo-image">
+            </a>
 
                 <!-- Navigation -->
                 <nav id="mainNav">
@@ -441,7 +458,7 @@
                     
                     <div class="founder-section">
                         <div class="team-image" style="max-width: 300px;">
-                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" 
+                            <img src="https://imgur.com/EQZ6SNr.jpg" 
                                  alt="Michelle Williams, Founder" class="team-photo">
                         </div>
                         <div class="founder-info">
