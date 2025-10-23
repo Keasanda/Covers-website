@@ -78,24 +78,24 @@
             height: 4rem;
         }
 
-/* Logo Image Styles */
-.logo {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-}
+        /* Logo Image Styles */
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
 
-.logo-image {
-    height: 4rem; /* Same height as your original text logo */
-    width: 12.5rem;  /* Maintain aspect ratio */
-    object-fit: contain;
-}
+        .logo-image {
+            height: 4rem; /* Same height as your original text logo */
+            width: 12.5rem;  /* Maintain aspect ratio */
+            object-fit: contain;
+        }
 
-/* Optional: Add hover effect */
-.logo-image:hover {
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
-}
+        /* Optional: Add hover effect */
+        .logo-image:hover {
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
 
 
         nav {
@@ -364,6 +364,35 @@
         .mobile-menu-button {
             display: none;
         }
+        
+        /* FOOTER STYLES (NEW) */
+        footer {
+            background-color: hsl(var(--background));
+            border-top: 1px solid hsl(var(--border));
+            padding: 2rem 0;
+            text-align: center;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .footer-link {
+            font-size: 0.875rem;
+            color: hsl(var(--foreground));
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-link:hover {
+            color: hsl(var(--primary));
+        }
+        .copyright {
+            font-size: 0.75rem;
+            color: hsl(var(--muted-foreground));
+            margin-top: 1rem;
+        }
+
 
         /* Media Queries */
         @media (min-width: 768px) {
@@ -416,6 +445,10 @@
             nav.active {
                 display: flex;
             }
+            .footer-links {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
         }
     </style>
 </head>
@@ -430,7 +463,6 @@
 </script>
 
 <body>
-    <!-- Announcement Bar -->
     <div class="announcement-bar">
         <div class="container">
             <p class="announcement-content">
@@ -439,27 +471,23 @@
         </div>
     </div>
 
-    <!-- Header -->
-<header>
+    <header>
     <div class="container">
         <div class="header-container">
-            <!-- Updated Logo with Image -->
             <a href="/" class="logo">
                 <img src="https://i.imgur.com/FUjP0Uy.jpg" 
                      alt="Darling Sew-cial Logo" 
                      class="logo-image">
             </a>
 
-            <!-- Navigation -->
             <nav id="mainNav">
                 <a href="Homepage.html" class="nav-link">Home</a>
-                <a href="#shop" class="nav-link">Shop</a>
+                <a href="#shop" class="nav-link">Shop</a> 
                 <a href="aboutus.html" class="nav-link">About us</a>
-                <a href="#news" class="nav-link">News</a>
-                <a href="#wholesale" class="nav-link">Wholesale</a>
+               
+              
             </nav>
 
-            <!-- Rest of your header code remains the same -->
             <button class="mobile-menu-button icon-button" id="menuButton">
                 <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -469,15 +497,13 @@
             </button>
 
             <div class="header-actions">
-                <!-- Your existing icons -->
-            </div>
+                </div>
         </div>
     </div>
 </header>
 
 
-    <!-- Hero Section -->
-  <section class="hero">
+    <section class="hero">
     <img src="https://imgur.com/vjsk9Je.jpg" 
          alt="Eco-friendly products on rustic wooden table" class="hero-image">
     <div class="hero-overlay"></div>
@@ -487,12 +513,11 @@
         <button class="hero-button">Explore Our Story</button>
     </div>
 </section>
-    <!-- Product Grid -->
-    <section class="product-grid-section">
+
+<section class="product-grid-section" id="shop">
         <div class="container">
             <h2 class="section-title">Featured products</h2>
             <div class="products-grid">
-                <!-- Product 1 -->
                 <div class="product-card">
                     <a href="product.html?id=1" class="product-link">
                         <div class="product-image-container">
@@ -500,14 +525,13 @@
                                  alt='"Botanical Garden" Reusable Food Cover Set - 4 Pieces' class="product-image">
                         </div>
                         <div class="product-info">
-                            <h3 class="product-title">Reusable Waterproof/ Cotton bowl covers - set of  protea Whisper</h3>
+                            <h3 class="product-title">Reusable Waterproof/ Cotton bowl covers - set of Protea Whisper</h3>
                             <div class="product-price">R 350 ZAR</div>
                         </div>
                     </a>
                  
                 </div>
 
-                <!-- Product 2 -->
                 <div class="product-card">
                     <a href="product.html?id=2" class="product-link">
                         <div class="product-image-container">
@@ -515,14 +539,13 @@
                                  alt='"Ocean Waves" Eco Food Covers - Sustainable Kitchen Collection' class="product-image">
                         </div>
                         <div class="product-info">
-                            <h3 class="product-title">Reusable Cotton bowl covers - Set of 3 Protea Fynbos </h3>
+                            <h3 class="product-title">Reusable Cotton bowl covers - Set of 3 Protea Fynbos</h3>
                             <div class="product-price">R 250.00 ZAR</div>
                         </div>
                     </a>
           
                 </div>
 
-                <!-- Product 3 -->
                 <div class="product-card">
                     <a href="product.html?id=3" class="product-link">
                         <div class="product-image-container">
@@ -537,7 +560,6 @@
               
                 </div>
 
-                <!-- Product 4 -->
                 <div class="product-card">
                     <a href="product.html?id=4" class="product-link">
                         <div class="product-image-container">
@@ -549,10 +571,9 @@
                             <div class="product-price">R 380.00 ZAR</div>
                         </div>
                     </a>
-                   
+                  
                 </div>
 
-                <!-- Product 5 -->
                 <div class="product-card">
                     <a href="product.html?id=5" class="product-link">
                         <div class="product-image-container">
@@ -564,10 +585,9 @@
                             <div class="product-price">R 320.00 ZAR</div>
                         </div>
                     </a>
-                   
+
                 </div>
 
-                <!-- Product 6 -->
                 <div class="product-card">
                     <a href="product.html?id=6" class="product-link">
                         <div class="product-image-container">
@@ -582,10 +602,19 @@
                  
                 </div>
 
-                
-               
+            </div>
+        </section>
+        
+<!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="contactus.html" class="footer-link">Contact Us</a>
+                <a href="returnpolicy.html" class="footer-link">Return Policy</a>
+            </div>
+            <p class="copyright">&copy; 2024 Darling Sew-cial. All rights reserved.</p>
         </div>
-    </section>
+    </footer>
 
     <script>
         // Mobile menu functionality

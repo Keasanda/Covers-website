@@ -270,6 +270,35 @@
             display: none;
         }
 
+         
+        /* FOOTER STYLES (NEW) */
+        footer {
+            background-color: hsl(var(--background));
+            border-top: 1px solid hsl(var(--border));
+            padding: 2rem 0;
+            text-align: center;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .footer-link {
+            font-size: 0.875rem;
+            color: hsl(var(--foreground));
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-link:hover {
+            color: hsl(var(--primary));
+        }
+        .copyright {
+            font-size: 0.75rem;
+            color: hsl(var(--muted-foreground));
+            margin-top: 1rem;
+        }
+
         /* Media Queries */
         @media (min-width: 768px) {
             nav {
@@ -346,13 +375,12 @@
             </a>
 
                 <!-- Navigation -->
-                <nav id="mainNav">
-                    <a href="index.html" class="nav-link">Home</a>
-                    <a href="#shop" class="nav-link">Shop</a>
-                    <a href="#about" class="nav-link">About us</a>
-                    <a href="#news" class="nav-link">News</a>
-                    <a href="#wholesale" class="nav-link">Wholesale</a>
-                </nav>
+            <nav id="mainNav">
+                <a href="Homepage.html" class="nav-link">Home</a>
+                <a href="Homepage.html" class="nav-link">Shop</a> 
+                <a href="aboutus.html" class="nav-link">About us</a>
+         
+            </nav>
 
                 <!-- Mobile Menu Button -->
                 <button class="mobile-menu-button icon-button" id="menuButton">
@@ -479,6 +507,17 @@
             </div>
         </div>
     </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="contactus.html" class="footer-link">Contact Us</a>
+                <a href="returnpolicy.html" class="footer-link">Return Policy</a>
+            </div>
+            <p class="copyright">&copy; 2024 Darling Sew-cial. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script>
         // Mobile menu functionality

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darling Sew-cial - Contact Us</title>
+    <style>
+        /* CSS Variables based on your design system - Black & White Theme */
+        :root {
+            --background: 0 0% 100%; /* White */
+            --foreground: 0 0% 0%; /* Black */
+            --card: 0 0% 100%; /* White */
+            --card-foreground: 0 0% 0%; /* Black */
+            --primary: 0 0% 0%; /* Black */
+            --primary-foreground: 0 0% 100%; /* White */
+            --secondary: 0 0% 96%; /* Light Grey */
+            --secondary-foreground: 0 0% 0%; /* Black */
+            --muted: 0 0% 94%; /* Light Grey */
+            --muted-foreground: 0 0% 45%; /* Dark Grey */
+            --accent: 0 0% 0%; /* Black */
+            --accent-foreground: 0 0% 100%; /* White */
+            --destructive: 0 84.2% 60.2%;
+            --destructive-foreground: 0 0% 100%;
+            --border: 0 0% 90%; /* Light Grey */
+            --input: 0 0% 90%; /* Light Grey */
+            --ring: 0 0% 0%; /* Black */
+            --radius: 0.375rem;
+            --announcement: 0 0% 0%; /* Black */
+            --announcement-foreground: 0 0% 100%; /* White */
+        }
+
+        /* Global styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            border-color: hsl(var(--border));
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: hsl(var(--background));
+            color: hsl(var(--foreground));
+            line-height: 1.6;
+            display: flex; /* Added for sticky footer layout */
+            flex-direction: column; /* Added for sticky footer layout */
+            min-height: 100vh; /* Added for sticky footer layout */
+        }
+
+        .main-content {
+            flex-grow: 1; /* Added for sticky footer layout */
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Announcement Bar */
+        .announcement-bar {
+            background-color: hsl(var(--announcement));
+            color: hsl(var(--announcement-foreground));
+        }
+
+        .announcement-content {
+            text-align: center;
+            font-size: 0.875rem;
+            padding: 0.5rem 1rem;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: hsl(var(--background));
+            border-bottom: 1px solid hsl(var(--border));
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 4rem;
+        }
+
+        /* Logo Image Styles */
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-image {
+            height: 4rem; 
+            width: 12.5rem;  
+            object-fit: contain;
+        }
+
+        .logo-image:hover {
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        nav {
+            display: none;
+        }
+
+        .nav-link {
+            font-size: 0.875rem;
+            color: hsl(var(--foreground));
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: hsl(var(--primary));
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .icon-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: hsl(var(--foreground));
+        }
+
+        .icon-button:hover {
+            background-color: hsl(var(--secondary));
+        }
+
+        .icon {
+            height: 1.25rem;
+            width: 1.25rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-button {
+            display: none;
+        }
+
+        /* FOOTER STYLES (NEW) */
+        footer {
+            background-color: hsl(var(--background));
+            border-top: 1px solid hsl(var(--border));
+            padding: 2rem 0;
+            text-align: center;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .footer-link {
+            font-size: 0.875rem;
+            color: hsl(var(--foreground));
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-link:hover {
+            color: hsl(var(--primary));
+        }
+        .copyright {
+            font-size: 0.75rem;
+            color: hsl(var(--muted-foreground));
+            margin-top: 1rem;
+        }
+
+        /* Media Queries */
+        @media (min-width: 768px) {
+            nav {
+                display: flex;
+                align-items: center;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .mobile-menu-button {
+                display: flex;
+            }
+            
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: hsl(var(--background));
+                border-bottom: 1px solid hsl(var(--border));
+                flex-direction: column;
+                padding: 1rem;
+                display: none;
+            }
+            
+            nav.active {
+                display: flex;
+            }
+            .footer-links {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+
+        /* CONTACT US SPECIFIC STYLES */
+        .content-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+        }
+        .content-section h1 {
+            font-size: 2.25rem;
+            font-weight: bold;
+            color: hsl(var(--primary));
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .contact-form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: hsl(var(--foreground));
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid hsl(var(--border));
+            border-radius: 0.375rem;
+            background-color: hsl(var(--card));
+            color: hsl(var(--foreground));
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: hsl(var(--primary));
+            outline: none;
+        }
+
+        .submit-button {
+            background-color: hsl(var(--primary));
+            color: hsl(var(--primary-foreground));
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-button:hover {
+            background-color: hsl(0, 0%, 20%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="announcement-bar">
+        <div class="container">
+            <p class="announcement-content">
+                Free shipping for orders over R1200. Delivery 3 - 5 days from payment.
+            </p>
+        </div>
+    </div>
+
+    <header>
+        <div class="container">
+            <div class="header-container">
+                <a href="Homepage.html" class="logo">
+                    <img src="https://i.imgur.com/FUjP0Uy.jpg" 
+                         alt="Darling Sew-cial Logo" 
+                         class="logo-image">
+                </a>
+
+                <nav id="mainNav">
+                    <a href="Homepage.html" class="nav-link">Home</a>
+                    <a href="Homepage.html#shop" class="nav-link">Shop</a> 
+                    <a href="aboutus.html" class="nav-link">About us</a>
+            
+                </nav>
+
+                <button class="mobile-menu-button icon-button" id="menuButton">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+
+                <div class="header-actions">
+                    </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container content-section">
+            <h1>Contact Us</h1>
+            <div class="contact-form-container">
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="full-name">Full Name</label>
+                        <input type="text" id="full-name" name="full-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="contactus.html" class="footer-link">Contact Us</a>
+                <a href="returnpolicy.html" class="footer-link">Return Policy</a>
+            </div>
+            <p class="copyright">&copy; 2024 Darling Sew-cial. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    <script>
+        // Mobile menu functionality (copied from Homepage.html)
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.querySelector('.mobile-menu-button');
+            const nav = document.querySelector('nav');
+            
+            if (mobileMenuButton && nav) {
+                mobileMenuButton.addEventListener('click', function() {
+                    nav.classList.toggle('active');
+                });
+            }
+            
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('nav') && !event.target.closest('.mobile-menu-button')) {
+                    nav.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

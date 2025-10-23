@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darling Sew-cial - Return Policy</title>
+    <style>
+        /* CSS Variables based on your design system - Black & White Theme */
+        :root {
+            --background: 0 0% 100%; /* White */
+            --foreground: 0 0% 0%; /* Black */
+            --card: 0 0% 100%; /* White */
+            --card-foreground: 0 0% 0%; /* Black */
+            --primary: 0 0% 0%; /* Black */
+            --primary-foreground: 0 0% 100%; /* White */
+            --secondary: 0 0% 96%; /* Light Grey */
+            --secondary-foreground: 0 0% 0%; /* Black */
+            --muted: 0 0% 94%; /* Light Grey */
+            --muted-foreground: 0 0% 45%; /* Dark Grey */
+            --accent: 0 0% 0%; /* Black */
+            --accent-foreground: 0 0% 100%; /* White */
+            --destructive: 0 84.2% 60.2%;
+            --destructive-foreground: 0 0% 100%;
+            --border: 0 0% 90%; /* Light Grey */
+            --input: 0 0% 90%; /* Light Grey */
+            --ring: 0 0% 0%; /* Black */
+            --radius: 0.375rem;
+            --announcement: 0 0% 0%; /* Black */
+            --announcement-foreground: 0 0% 100%; /* White */
+        }
+
+        /* Global styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            border-color: hsl(var(--border));
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: hsl(var(--background));
+            color: hsl(var(--foreground));
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Announcement Bar */
+        .announcement-bar {
+            background-color: hsl(var(--announcement));
+            color: hsl(var(--announcement-foreground));
+        }
+
+        .announcement-content {
+            text-align: center;
+            font-size: 0.875rem;
+            padding: 0.5rem 1rem;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: hsl(var(--background));
+            border-bottom: 1px solid hsl(var(--border));
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 4rem;
+        }
+
+        /* Logo Image Styles */
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-image {
+            height: 4rem; 
+            width: 12.5rem;  
+            object-fit: contain;
+        }
+
+        .logo-image:hover {
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        nav {
+            display: none;
+        }
+
+        .nav-link {
+            font-size: 0.875rem;
+            color: hsl(var(--foreground));
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: hsl(var(--primary));
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .icon-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: hsl(var(--foreground));
+        }
+
+        .icon-button:hover {
+            background-color: hsl(var(--secondary));
+        }
+
+        .icon {
+            height: 1.25rem;
+            width: 1.25rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-button {
+            display: none;
+        }
+
+        /* Media Queries */
+        @media (min-width: 768px) {
+            nav {
+                display: flex;
+                align-items: center;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .mobile-menu-button {
+                display: flex;
+            }
+            
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: hsl(var(--background));
+                border-bottom: 1px solid hsl(var(--border));
+                flex-direction: column;
+                padding: 1rem;
+                display: none;
+            }
+            
+            nav.active {
+                display: flex;
+            }
+        }
+
+        /* RETURN POLICY SPECIFIC STYLES */
+        .content-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+        }
+        .content-section h1 {
+            font-size: 2.25rem;
+            font-weight: bold;
+            color: hsl(var(--primary));
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .policy-content h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: hsl(var(--primary));
+            border-bottom: 1px solid hsl(var(--border)); /* Added the requested line style */
+            padding-bottom: 0.5rem;
+        }
+        .policy-content p, .policy-content ul {
+            font-size: 1rem;
+            color: hsl(var(--foreground));
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+        .policy-content ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+        }
+        .policy-content strong {
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="announcement-bar">
+        <div class="container">
+            <p class="announcement-content">
+                Free shipping for orders over R1200. Delivery 3 - 5 days from payment.
+            </p>
+        </div>
+    </div>
+
+    <header>
+        <div class="container">
+            <div class="header-container">
+                <a href="Homepage.html" class="logo">
+                    <img src="https://i.imgur.com/FUjP0Uy.jpg" 
+                         alt="Darling Sew-cial Logo" 
+                         class="logo-image">
+                </a>
+
+                <nav id="mainNav">
+                    <a href="Homepage.html" class="nav-link">Home</a>
+                    <a href="Homepage.html#shop" class="nav-link">Shop</a> 
+                    <a href="returnpolicy.html" class="nav-link">Return Policy</a>
+                    <a href="contactus.html" class="nav-link">Contact Us</a>
+                    <a href="aboutus.html" class="nav-link">About us</a>
+                 
+                </nav>
+
+                <button class="mobile-menu-button icon-button" id="menuButton">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+
+                <div class="header-actions">
+                    </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container content-section">
+            <h1>Our Return Policy</h1>
+            <div class="policy-content">
+
+                <h3>Refunds (if applicable)</h3>
+                <p>Once your return is received and inspected, we will send you an email to notify you that we have received your returned item. We will also notify you of the approval or rejection of your refund. If you are approved, then your refund will be processed, and a credit will automatically be applied to your credit card or original method of payment, within a certain amount of days.</p>
+
+                <h3>Late or missing refunds (if applicable)</h3>
+                <p>If you haven’t received a refund yet, first check your bank account again. Then contact your credit card company, it may take some time before your refund is officially posted. Next contact your bank. There is often some processing time before a refund is posted. If you’ve done all of this and you still have not received your refund yet, please contact us at <a href="mailto:darlingsewcial@gmail.com">darlingsewcial@gmail.com</a></p>
+
+                <h3>Sale items (if applicable)</h3>
+                <p>Only regular priced items may be refunded, unfortunately **sale items cannot be refunded.**</p>
+
+                <h3>Exchanges (if applicable)</h3>
+                <p>We only replace items if they are defective or damaged. If you need to exchange it for the same item, send us an email.</p>
+
+                <h3>Gifts</h3>
+                <p>If the item was marked as a gift when purchased and shipped directly to you, you’ll receive a gift credit for the value of your return. Once the returned item is received, a gift certificate will be mailed to you.</p>
+                <p>If the item wasn’t marked as a gift when purchased, or the gift giver had the order shipped to themselves to give to you later, we will send a refund to the gift giver and he will find out about your return.</p>
+                
+                <h3>Shipping</h3>
+                <p>You will be responsible for paying for your own shipping costs for returning your item. Shipping costs are non-refundable. If you receive a refund, the cost of return shipping will be deducted from your refund.</p>
+                <p>Depending on where you live, the time it may take for your exchanged product to reach you, may vary.</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Mobile menu functionality (copied from Homepage.html)
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.querySelector('.mobile-menu-button');
+            const nav = document.querySelector('nav');
+            
+            if (mobileMenuButton && nav) {
+                mobileMenuButton.addEventListener('click', function() {
+                    nav.classList.toggle('active');
+                });
+            }
+            
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('nav') && !event.target.closest('.mobile-menu-button')) {
+                    nav.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
