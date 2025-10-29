@@ -419,37 +419,72 @@
     <script>
         // === PRODUCT DATA STORE (Easily add and remove products here) ===
         const productData = [
-            {
-                id: 1,
-                title: 'Reusable Waterproof/ Cotton bowl covers - set of Protea Whisper',
-                price: '350.00',
-                description: '<p><strong>Washable and Reusable Alternative to Disposable Plastic ClingWrap.</strong></p><p>This set of 3 bowl covers features the beautiful <strong>Protea Whisper</strong> print. They are designed for superior food preservation and easy cleaning.</p><p class="font-medium">Features:</p><ul><li><strong>Foodsafe Waterproof Lining:</strong> Lining can be wiped down between uses.</li><li><strong>100% Cotton outer:</strong> High-quality, durable fabric.</li><li><strong>No more fridge odors.</strong></li></ul><p class="font-medium">Set of 3 Sizes:</p><ul><li><strong>Small (up to 17 cm):</strong> Fits most standard size cereal bowls.</li><li><strong>Medium (up to 21 cm):</strong> Fits most standard sized bowls used during veggie prep.</li><li><strong>Large (up to 26 cm):</strong> Fits most large salad bowls.</li></ul><p>Choosing reusable means choosing a healthier planet.</p>',
-                images: [
-                    { url: 'https://imgur.com/VufUQ7I.png', alt: 'Protea Whisper set - folded' },
-                    { url: 'https://imgur.com/mCwOqPb.png', alt: 'Protea Whisper set - bowls' },
-                    { url: 'https://imgur.com/Knah4n2.png', alt: 'Protea Whisper close-up' }
-                ]
-            },
+           {
+    id: 1,
+    title: 'Reusable Waterproof /Cotton bowl covers - Set of 3 Protea Whisper',
+    price: '350.00',
+    description: `
+        <ul>
+            <li><strong>Washable and Reusable Alternative to Disposable Plastic ClingWrap</strong></li>
+            <li><strong>Set of 3 (Small, Medium, Large)</strong></li>
+            <li><strong>Small Bowl Cover:</strong> Fits most standard size cereal bowls up to 17 cm</li>
+            <li><strong>Medium Bowl Cover:</strong> Fits most standard sized bowls used during veggie prep up to 21 cm</li>
+            <li><strong>Large Bowl Cover:</strong> Fits most large salad bowls up to 26 cm</li>
+            <li><strong>No more fridge odors</strong></li>
+            <li><strong>Foodsafe Waterproof Lining with Cotton Outer:</strong> Lining can be wiped down between uses</li>
+            <li><strong>100% Cotton outer</strong></li>
+        </ul>
+       <p><strong>Choosing reusable means choosing a healthier planet.</strong></p>
+    `,
+    images: [
+        { url: 'https://imgur.com/VufUQ7I.png', alt: 'Protea Whisper set - folded' },
+        { url: 'https://imgur.com/mCwOqPb.png', alt: 'Protea Whisper set - bowls' },
+        { url: 'https://imgur.com/Knah4n2.png', alt: 'Protea Whisper close-up' },
+        { url: 'https://imgur.com/a9O5wES.png', alt: 'Protea Whisper close-up' }
+    ]
+},
             {
                 id: 2,
                 title: 'Reusable Cotton bowl covers - Set of 3 Protea Fynbos',
                 price: '250.00',
-                description: '<p><strong>Washable and Reusable Alternative to Disposable Plastic ClingWrap.</strong></p><p>This breathable cotton set features the vibrant <strong>Protea Fynbos</strong> print. Ideal for bread proofing, covering leftovers, or picnics. Allows food to breathe.</p><p class="font-medium">Features:</p><ul><li><strong>100% Cotton:</strong> Breathable and high-quality fabric.</li><li><strong>Elastic Edges:</strong> Fit tightly over a variety of bowls.</li></ul><p class="font-medium">Set of 3 Sizes:</p><ul><li><strong>Small (up to 17 cm):</strong> Fits most standard size cereal bowls.</li><li><strong>Medium (up to 21 cm):</strong> Fits most standard sized bowls used during veggie prep.</li><li><strong>Large (up to 26 cm):</strong> Fits most large salad bowls.</li></ul><p>Choosing reusable means choosing a healthier planet.</p>',
+                description: `
+                <ul>
+    <li><strong>Washable and Reusable Alternative to Disposable Plastic ClingWrap</strong></li>
+    <li><strong>Set of 3 (Small, Medium, Large)</strong></li>
+    <li><strong>Small Bowl Cover:</strong> Fits most standard size cereal bowls up to 17 cm</li>
+    <li><strong>Medium Bowl Cover:</strong> Fits most standard sized bowls used during veggie prep up to 12 cm</li>
+    <li><strong>Large Bowl Cover:</strong> Fits most large salad bowls up to 26 cm</li>
+    <li><strong>Elastic Edges fit Tightly Over A Variety of Bowls</strong></li>
+    <li><strong>100% Cotton</strong></li>
+</ul>     <p><strong>Choosing reusable means choosing a healthier planet.</strong></p> `,
+
                 images: [
                     { url: 'https://imgur.com/qsf7omw.png', alt: 'Protea Fynbos set - folded' },
                     { url: 'https://imgur.com/P0s6VMk.png', alt: 'Protea Fynbos - on a bowl' },
-                    { url: 'https://imgur.com/kQ1wP4p.png', alt: 'Protea Fynbos - on a bowl' }
+                    { url: 'https://imgur.com/kQ1wP4p.png', alt: 'Protea Fynbos - on a bowl' } ,
+                      { url: 'https://imgur.com/g86z1aG.png', alt: 'Protea Fynbos - on a bowl' }
                 ]
             },
             {
                 id: 3,
                 title: 'Reusable Cotton bowl covers - Set of 3 Guinea Out of Africa',
                 price: '250.00',
-                description: '<p><strong>Washable and Reusable Alternative to Disposable Plastic ClingWrap.</strong></p><p>A striking set of 3 breathable cotton bowl covers featuring the iconic <strong>Guinea Out of Africa</strong> print. A stylish and eco-friendly alternative to plastic wrap for your kitchen. This is a non-waterproof set, allowing food to breathe.</p><p class="font-medium">Features:</p><ul><li><strong>100% Cotton:</strong> Breathable and high-quality fabric.</li><li><strong>Elastic Edges:</strong> Fit tightly over a variety of bowls.</li></ul><p class="font-medium">Set of 3 Sizes:</p><ul><li><strong>Small (up to 17 cm):</strong> Fits most standard size cereal bowls.</li><li><strong>Medium (up to 21 cm):</strong> Fits most standard sized bowls used during veggie prep.</li><li><strong>Large (up to 26 cm):</strong> Fits most large salad bowls.</li></ul><p>Choosing reusable means choosing a healthier planet.</p>',
+                description: `
+                <ul>
+    <li><strong>Washable and Reusable Alternative to Disposable Plastic ClingWrap</strong></li>
+    <li><strong>Set of 3 (Small, Medium, Large)</strong></li>
+    <li><strong>Small Bowl Cover:</strong> Fits most standard size cereal bowls up to 17 cm</li>
+    <li><strong>Medium Bowl Cover:</strong> Fits most standard sized bowls used during veggie prep up to 12 cm</li>
+    <li><strong>Large Bowl Cover:</strong> Fits most large salad bowls up to 26 cm</li>
+    <li><strong>Elastic Edges fit Tightly Over A Variety of Bowls</strong></li>
+    <li><strong>100% Cotton</strong></li>
+</ul>     <p><strong>Choosing reusable means choosing a healthier planet.</strong></p> `,
                 images: [
                     { url: 'https://imgur.com/edZ0wOH.png', alt: 'Guinea Out of Africa set - folded' },
                     { url: 'https://imgur.com/9wNKgBx.png', alt: 'Guinea Out of Africa - close-up' },
-                    { url: 'https://imgur.com/90TasAT.png', alt: 'Guinea Out of Africa - close-up' }
+                    { url: 'https://imgur.com/90TasAT.png', alt: 'Guinea Out of Africa - close-up' },
+                    { url: 'https://imgur.com/65Xzt53.png', alt: 'Guinea Out of Africa - close-up' }
+
                 ]
             },
             {
