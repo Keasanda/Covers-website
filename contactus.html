@@ -4,29 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Darling Sew-cial - Contact Us</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* CSS Variables based on your design system - Black & White Theme */
+        /* CSS Variables - Updated to new color scheme */
         :root {
-            --background: 0 0% 100%; /* White */
-            --foreground: 0 0% 0%; /* Black */
-            --card: 0 0% 100%; /* White */
-            --card-foreground: 0 0% 0%; /* Black */
-            --primary: 0 0% 0%; /* Black */
-            --primary-foreground: 0 0% 100%; /* White */
-            --secondary: 0 0% 96%; /* Light Grey */
-            --secondary-foreground: 0 0% 0%; /* Black */
-            --muted: 0 0% 94%; /* Light Grey */
-            --muted-foreground: 0 0% 45%; /* Dark Grey */
-            --accent: 0 0% 0%; /* Black */
-            --accent-foreground: 0 0% 100%; /* White */
-            --destructive: 0 84.2% 60.2%;
-            --destructive-foreground: 0 0% 100%;
-            --border: 0 0% 90%; /* Light Grey */
-            --input: 0 0% 90%; /* Light Grey */
-            --ring: 0 0% 0%; /* Black */
+            --background: 30, 20%, 97%;        /* #F9F7F5 */
+            --foreground: 0, 0%, 0%;           /* Black */
+            --card: 30, 20%, 97%;
+            --card-foreground: 0, 0%, 0%;
+            --primary: 24, 20%, 57%;           /* #A88E7D */
+            --primary-foreground: 0, 0%, 100%; /* White */
+            --secondary: 28, 24%, 89%;         /* #EAE3DD */
+            --secondary-foreground: 0, 0%, 0%;
+            --muted: 28, 24%, 89%;
+            --muted-foreground: 24, 10%, 40%;  /* Complementary dark taupe */
+            --accent: 24, 20%, 57%;
+            --accent-foreground: 0, 0%, 100%;
+            --destructive: 0, 84%, 60%;
+            --destructive-foreground: 0, 0%, 100%;
+            --border: 28, 15%, 80%;            /* Soft border */
+            --input: 28, 24%, 89%;
+            --ring: 24, 20%, 57%;
             --radius: 0.375rem;
-            --announcement: 0 0% 0%; /* Black */
-            --announcement-foreground: 0 0% 100%; /* White */
+            --announcement: 24, 20%, 57%;
+            --announcement-foreground: 0, 0%, 100%;
         }
 
         /* Global styles */
@@ -38,17 +40,18 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Cormorant Garamond', serif;
             background-color: hsl(var(--background));
             color: hsl(var(--foreground));
             line-height: 1.6;
-            display: flex; /* Added for sticky footer layout */
-            flex-direction: column; /* Added for sticky footer layout */
-            min-height: 100vh; /* Added for sticky footer layout */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            font-size: 1.1rem;
         }
 
         .main-content {
-            flex-grow: 1; /* Added for sticky footer layout */
+            flex-grow: 1;
         }
 
         .container {
@@ -61,11 +64,12 @@
         .announcement-bar {
             background-color: hsl(var(--announcement));
             color: hsl(var(--announcement-foreground));
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.875rem;
         }
 
         .announcement-content {
             text-align: center;
-            font-size: 0.875rem;
             padding: 0.5rem 1rem;
         }
 
@@ -85,7 +89,6 @@
             height: 4rem;
         }
 
-        /* Logo Image Styles */
         .logo {
             display: flex;
             align-items: center;
@@ -93,8 +96,8 @@
         }
 
         .logo-image {
-            height: 4rem; 
-            width: 12.5rem;  
+            height: 4rem;
+            width: 12.5rem;
             object-fit: contain;
         }
 
@@ -108,10 +111,12 @@
         }
 
         .nav-link {
+            font-family: 'Montserrat', sans-serif;
             font-size: 0.875rem;
             color: hsl(var(--foreground));
             text-decoration: none;
             transition: color 0.3s;
+            font-weight: 500;
         }
 
         .nav-link:hover {
@@ -134,6 +139,7 @@
             align-items: center;
             justify-content: center;
             color: hsl(var(--foreground));
+            font-family: 'Montserrat', sans-serif;
         }
 
         .icon-button:hover {
@@ -150,12 +156,13 @@
             display: none;
         }
 
-        /* FOOTER STYLES (NEW) */
+        /* Footer */
         footer {
             background-color: hsl(var(--background));
             border-top: 1px solid hsl(var(--border));
             padding: 2rem 0;
             text-align: center;
+            font-family: 'Montserrat', sans-serif;
         }
         .footer-links {
             display: flex;
@@ -168,6 +175,7 @@
             color: hsl(var(--foreground));
             text-decoration: none;
             transition: color 0.3s;
+            font-weight: 500;
         }
         .footer-link:hover {
             color: hsl(var(--primary));
@@ -191,7 +199,6 @@
             .mobile-menu-button {
                 display: flex;
             }
-            
             nav {
                 position: absolute;
                 top: 100%;
@@ -203,7 +210,6 @@
                 padding: 1rem;
                 display: none;
             }
-            
             nav.active {
                 display: flex;
             }
@@ -220,8 +226,9 @@
             padding: 3rem 1rem;
         }
         .content-section h1 {
-            font-size: 2.25rem;
-            font-weight: bold;
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            font-weight: normal;
             color: hsl(var(--primary));
             margin-bottom: 2rem;
             text-align: center;
@@ -241,6 +248,7 @@
 
         .form-group label {
             display: block;
+            font-family: 'Montserrat', sans-serif;
             font-size: 0.875rem;
             font-weight: 500;
             margin-bottom: 0.5rem;
@@ -256,7 +264,8 @@
             border-radius: 0.375rem;
             background-color: hsl(var(--card));
             color: hsl(var(--foreground));
-            font-size: 1rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
             transition: border-color 0.3s;
         }
 
@@ -277,6 +286,7 @@
             border: none;
             padding: 0.75rem 1.5rem;
             border-radius: 0.375rem;
+            font-family: 'Montserrat', sans-serif;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
@@ -284,11 +294,10 @@
         }
 
         .submit-button:hover {
-            background-color: hsl(0, 0%, 20%);
+            background-color: hsl(24, 20%, 47%);
         }
     </style>
 </head>
-
 <body>
     <div class="announcement-bar">
         <div class="container">
@@ -302,18 +311,13 @@
         <div class="container">
             <div class="header-container">
                 <a href="index.html" class="logo">
-                    <img src="https://i.imgur.com/FUjP0Uy.jpg" 
-                         alt="Darling Sew-cial Logo" 
-                         class="logo-image">
+                    <img src="https://i.imgur.com/FUjP0Uy.jpg" alt="Darling Sew-cial Logo" class="logo-image">
                 </a>
-
                 <nav id="mainNav">
                     <a href="index.html" class="nav-link">Home</a>
-                    <a href="index.html#shop" class="nav-link">Shop</a> 
+                    <a href="index.html#shop" class="nav-link">Shop</a>
                     <a href="aboutus.html" class="nav-link">About us</a>
-            
                 </nav>
-
                 <button class="mobile-menu-button icon-button" id="menuButton">
                     <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -321,9 +325,9 @@
                         <line x1="3" y1="18" x2="21" y2="18"></line>
                     </svg>
                 </button>
-
                 <div class="header-actions">
-                    </div>
+                    <!-- Icons can be added here if needed -->
+                </div>
             </div>
         </div>
     </header>
@@ -361,19 +365,15 @@
         </div>
     </footer>
 
-
     <script>
-        // Mobile menu functionality (copied from index.html)
         document.addEventListener('DOMContentLoaded', function() {
             const mobileMenuButton = document.querySelector('.mobile-menu-button');
             const nav = document.querySelector('nav');
-            
             if (mobileMenuButton && nav) {
                 mobileMenuButton.addEventListener('click', function() {
                     nav.classList.toggle('active');
                 });
             }
-            
             document.addEventListener('click', function(event) {
                 if (!event.target.closest('nav') && !event.target.closest('.mobile-menu-button')) {
                     nav.classList.remove('active');

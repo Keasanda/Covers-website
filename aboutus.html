@@ -4,29 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Darling Sew-cial</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* CSS Variables based on your design system - Black & White Theme */
+        /* CSS Variables - Updated to new color scheme */
         :root {
-            --background: 0 0% 100%; /* White */
-            --foreground: 0 0% 0%; /* Black */
-            --card: 0 0% 100%; /* White */
-            --card-foreground: 0 0% 0%; /* Black */
-            --primary: 0 0% 0%; /* Black */
-            --primary-foreground: 0 0% 100%; /* White */
-            --secondary: 0 0% 96%; /* Light Grey */
-            --secondary-foreground: 0 0% 0%; /* Black */
-            --muted: 0 0% 94%; /* Light Grey */
-            --muted-foreground: 0 0% 45%; /* Dark Grey */
-            --accent: 0 0% 0%; /* Black */
-            --accent-foreground: 0 0% 100%; /* White */
-            --destructive: 0 84.2% 60.2%;
-            --destructive-foreground: 0 0% 100%;
-            --border: 0 0% 90%; /* Light Grey */
-            --input: 0 0% 90%; /* Light Grey */
-            --ring: 0 0% 0%; /* Black */
+            --background: 30, 20%, 97%;        /* #F9F7F5 */
+            --foreground: 0, 0%, 0%;           /* Black */
+            --card: 30, 20%, 97%;
+            --card-foreground: 0, 0%, 0%;
+            --primary: 24, 20%, 57%;           /* #A88E7D */
+            --primary-foreground: 0, 0%, 100%; /* White */
+            --secondary: 28, 24%, 89%;         /* #EAE3DD */
+            --secondary-foreground: 0, 0%, 0%;
+            --muted: 28, 24%, 89%;
+            --muted-foreground: 24, 10%, 40%;  /* Complementary dark taupe */
+            --accent: 24, 20%, 57%;
+            --accent-foreground: 0, 0%, 100%;
+            --destructive: 0, 84%, 60%;
+            --destructive-foreground: 0, 0%, 100%;
+            --border: 28, 15%, 80%;            /* Soft border */
+            --input: 28, 24%, 89%;
+            --ring: 24, 20%, 57%;
             --radius: 0.375rem;
-            --announcement: 0 0% 0%; /* Black */
-            --announcement-foreground: 0 0% 100%; /* White */
+            --announcement: 24, 20%, 57%;
+            --announcement-foreground: 0, 0%, 100%;
         }
 
         /* Global styles */
@@ -38,10 +40,11 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Cormorant Garamond', serif;
             background-color: hsl(var(--background));
             color: hsl(var(--foreground));
             line-height: 1.6;
+            font-size: 1.1rem; /* Slightly larger for elegance */
         }
 
         .container {
@@ -54,11 +57,12 @@
         .announcement-bar {
             background-color: hsl(var(--announcement));
             color: hsl(var(--announcement-foreground));
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.875rem;
         }
 
         .announcement-content {
             text-align: center;
-            font-size: 0.875rem;
             padding: 0.5rem 1rem;
         }
 
@@ -78,34 +82,34 @@
             height: 4rem;
         }
 
-        /* Logo Image Styles */
-.logo {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-}
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
 
-.logo-image {
-    height: 4rem; /* Same height as your original text logo */
-    width: 12.5rem;  /* Maintain aspect ratio */
-    object-fit: contain;
-}
+        .logo-image {
+            height: 4rem;
+            width: 12.5rem;
+            object-fit: contain;
+        }
 
-/* Optional: Add hover effect */
-.logo-image:hover {
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
-}
+        .logo-image:hover {
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
 
         nav {
             display: none;
         }
 
         .nav-link {
+            font-family: 'Montserrat', sans-serif;
             font-size: 0.875rem;
             color: hsl(var(--foreground));
             text-decoration: none;
             transition: color 0.3s;
+            font-weight: 500;
         }
 
         .nav-link:hover {
@@ -128,6 +132,7 @@
             align-items: center;
             justify-content: center;
             color: hsl(var(--foreground));
+            font-family: 'Montserrat', sans-serif;
         }
 
         .icon-button:hover {
@@ -155,15 +160,19 @@
         }
 
         .about-title {
-            font-size: 2.5rem;
-            font-weight: bold;
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            font-weight: normal;
             color: hsl(var(--primary));
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             text-align: center;
+            line-height: 1.2;
         }
 
         .about-subtitle {
-            font-size: 1.25rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
             color: hsl(var(--muted-foreground));
             text-align: center;
             max-width: 600px;
@@ -202,20 +211,23 @@
         }
 
         .section-title {
-            font-size: 1.5rem;
-            font-weight: 600;
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            font-weight: normal;
             color: hsl(var(--primary));
             margin-bottom: 0.5rem;
+            line-height: 1.2;
         }
 
         .story-text {
-            font-size: 1.125rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
             color: hsl(var(--foreground));
             line-height: 1.7;
         }
 
         .mission-highlight {
-            font-weight: bold;
+            font-weight: 700;
             color: hsl(var(--primary));
         }
 
@@ -233,8 +245,9 @@
         }
 
         .value-title {
-            font-size: 1.25rem;
-            font-weight: 600;
+            font-family: 'Great Vibes', cursive;
+            font-size: 2rem;
+            font-weight: normal;
             color: hsl(var(--primary));
             margin-bottom: 0.5rem;
         }
@@ -255,14 +268,17 @@
         }
 
         .founder-name {
-            font-size: 1.5rem;
-            font-weight: 600;
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            font-weight: normal;
             color: hsl(var(--primary));
         }
 
         .founder-role {
+            font-family: 'Montserrat', sans-serif;
             font-size: 1rem;
             color: hsl(var(--muted-foreground));
+            letter-spacing: 0.5px;
         }
 
         /* Mobile Menu Button */
@@ -270,13 +286,13 @@
             display: none;
         }
 
-         
-        /* FOOTER STYLES (NEW) */
+        /* Footer */
         footer {
             background-color: hsl(var(--background));
             border-top: 1px solid hsl(var(--border));
             padding: 2rem 0;
             text-align: center;
+            font-family: 'Montserrat', sans-serif;
         }
         .footer-links {
             display: flex;
@@ -289,6 +305,7 @@
             color: hsl(var(--foreground));
             text-decoration: none;
             transition: color 0.3s;
+            font-weight: 500;
         }
         .footer-link:hover {
             color: hsl(var(--primary));
@@ -306,21 +323,17 @@
                 align-items: center;
                 gap: 2rem;
             }
-            
             .about-title {
-                font-size: 3rem;
+                font-size: 4rem;
             }
-            
             .values-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
-            
             .founder-section {
                 flex-direction: row;
                 align-items: flex-start;
                 gap: 2rem;
             }
-            
             .founder-info {
                 flex: 1;
             }
@@ -330,7 +343,6 @@
             .mobile-menu-button {
                 display: flex;
             }
-            
             nav {
                 position: absolute;
                 top: 100%;
@@ -342,18 +354,15 @@
                 padding: 1rem;
                 display: none;
             }
-            
             nav.active {
                 display: flex;
             }
-            
             .team-image {
                 height: 300px;
             }
         }
     </style>
 </head>
-
 <body>
     <!-- Announcement Bar -->
     <div class="announcement-bar">
@@ -368,21 +377,14 @@
     <header>
         <div class="container">
             <div class="header-container">
-           <a href="/" class="logo">
-                <img src="https://i.imgur.com/FUjP0Uy.jpg" 
-                     alt="Darling Sew-cial Logo" 
-                     class="logo-image">
-            </a>
-
-                <!-- Navigation -->
-            <nav id="mainNav">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="index.html" class="nav-link">Shop</a> 
-                <a href="aboutus.html" class="nav-link">About us</a>
-         
-            </nav>
-
-                <!-- Mobile Menu Button -->
+                <a href="/" class="logo">
+                    <img src="https://i.imgur.com/FUjP0Uy.jpg" alt="Darling Sew-cial Logo" class="logo-image">
+                </a>
+                <nav id="mainNav">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="index.html" class="nav-link">Shop</a>
+                    <a href="aboutus.html" class="nav-link">About us</a>
+                </nav>
                 <button class="mobile-menu-button icon-button" id="menuButton">
                     <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -390,8 +392,6 @@
                         <line x1="3" y1="18" x2="21" y2="18"></line>
                     </svg>
                 </button>
-
-                <!-- Header Icons -->
                 <div class="header-actions">
                     <button class="icon-button">
                         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -423,120 +423,114 @@
             <div class="about-container">
                 <h2 class="about-title">Our Story</h2>
                 <p class="about-subtitle">From a kitchen table to a community of makers creating sustainable alternatives</p>
-                
+
                 <div class="team-image">
-                    <img src="https://imgur.com/LjfbtDG.jpg" 
-                         alt="The Darling Sew-cial Team" class="team-photo">
+                    <img src="https://imgur.com/LjfbtDG.jpg" alt="The Darling Sew-cial Team" class="team-photo">
                 </div>
-                
+
                 <div class="about-content">
                     <div class="story-section">
                         <div>
                             <h3 class="section-title">Our Story</h3>
                             <p class="story-text">
-                               Darling Sew-cial (social) was created out of a need — a need
-to care for my family, to waste less, and to make something
-meaningful from what we had.
-Inspired by my mom, who in 2007 started sewing her own
-bowl covers (a modern take on the old-fashioned doiley used
-to protect food from flies), I picked up her legacy during the
-2020 lockdown. As a single mom of two, I began sewing from
-my kitchen table — not just to get by, but to build something
-with purpose.
-What started as a way to cover leftovers and reduce singleuse
-plastic clingwrap turned into a growing community and a
-business that now creates flexible work for women in similar
-situations.
-Every cover is washable, reusable, and made with care — just
-like my mom’s were.
-Thank you for supporting this journey.
-Let’s get sewcial. 🧵
+                                Darling Sew-cial (social) was created out of a need — a need
+                                to care for my family, to waste less, and to make something
+                                meaningful from what we had.
+                                Inspired by my mom, who in 2007 started sewing her own
+                                bowl covers (a modern take on the old-fashioned doiley used
+                                to protect food from flies), I picked up her legacy during the
+                                2020 lockdown. As a single mom of two, I began sewing from
+                                my kitchen table — not just to get by, but to build something
+                                with purpose.
+                                What started as a way to cover leftovers and reduce single-use
+                                plastic clingwrap turned into a growing community and a
+                                business that now creates flexible work for women in similar
+                                situations.
+                                Every cover is washable, reusable, and made with care — just
+                                like my mom’s were.
+                                Thank you for supporting this journey.
+                                Let’s get sewcial. 🧵
                             </p>
-                          
                         </div>
-                        
-                        <div>
-                            <h3 class="section-title"> What we do
-                            </h3>
-                            <p class="story-text">
-                         At Darling Sew-cial, we create beautiful, reusable bowl covers
-that help reduce single-use plastic clingwrap in your kitchen — all
-sewn by hand, with care.
-Inspired by the old-fashioned doiley and a tradition of
-resourcefulness passed down from generations, our covers are
-designed to keep food fresh, protect it from flies, and look lovely
-on your counter or table.
-We offer two ranges:
-                            <ul class="story-text" style="margin-left: 1.5rem; margin-top: 0.5rem;">
-                                <li><span class="mission-highlight">Lined</span> — Waterproof, perfect for storing leftovers in the fridge</li>
-                                <li><span class="mission-highlight">Unlined</span> — Made from 100% cotton, ideal for covering food during prep or on the table</li>
-                            </ul>
-                        </div>
-                        Both are washable, waste-reducing, and made by women in our
-community — helping create flexible employment for moms and
-makers.
-It’s practical sustainability, with heart.
-                        <div>
-                            <h3 class="section-title">Our Mission </h3>
-                            <p class="story-text">
-                               Our mission at Darling Sew-cial is to make sustainable living simple, beautiful,
-and accessible — one handmade bowl cover at a time.
-We are committed to:
-Reducing plastic waste through practical, reusable alternatives
-Honoring traditional, passed-down skills with modern purpose
-Creating dignified, flexible work opportunities for women — especially moms
-like me
-Rooted in care, community, and conscious choices, every product we sew is a
-small step toward a kinder kitchen and a cleaner planet.
-Because when women support each other, even the smallest stitches can make a difference.
 
-<br>
-                             <h3 class="section-title">Our Vision  </h3>
-                              At Darling Sew-cial, our vision is to build a world where handmade,sustainable choices are part of everyday life — where reducing waste feelsnatural, and meaningful work is within reach for every woman.We imagine homes filled with warmth and intention. Kitchens that choosereusable over disposable. And a community of women empowered throughskill, creativity, and connection.We believe small, thoughtful actions — like covering a bowl — can lead tolasting change.
+                        <div>
+                            <h3 class="section-title">What we do</h3>
+                            <p class="story-text">
+                                At Darling Sew-cial, we create beautiful, reusable bowl covers
+                                that help reduce single-use plastic clingwrap in your kitchen — all
+                                sewn by hand, with care.
+                                Inspired by the old-fashioned doiley and a tradition of
+                                resourcefulness passed down from generations, our covers are
+                                designed to keep food fresh, protect it from flies, and look lovely
+                                on your counter or table.
+                                We offer two ranges:
+                                <ul class="story-text" style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                                    <li><span class="mission-highlight">Lined</span> — Waterproof, perfect for storing leftovers in the fridge</li>
+                                    <li><span class="mission-highlight">Unlined</span> — Made from 100% cotton, ideal for covering food during prep or on the table</li>
+                                </ul>
+                                Both are washable, waste-reducing, and made by women in our
+                                community — helping create flexible employment for moms and
+                                makers.
+                                It’s practical sustainability, with heart.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h3 class="section-title">Our Mission</h3>
+                            <p class="story-text">
+                                Our mission at Darling Sew-cial is to make sustainable living simple, beautiful,
+                                and accessible — one handmade bowl cover at a time.
+                                We are committed to:
+                                Reducing plastic waste through practical, reusable alternatives
+                                Honoring traditional, passed-down skills with modern purpose
+                                Creating dignified, flexible work opportunities for women — especially moms
+                                like me
+                                Rooted in care, community, and conscious choices, every product we sew is a
+                                small step toward a kinder kitchen and a cleaner planet.
+                                Because when women support each other, even the smallest stitches can make a difference.
+                                <br><br>
+                                <h3 class="section-title">Our Vision</h3>
+                                At Darling Sew-cial, our vision is to build a world where handmade, sustainable choices are part of everyday life — where reducing waste feels natural, and meaningful work is within reach for every woman. We imagine homes filled with warmth and intention. Kitchens that choose reusable over disposable. And a community of women empowered through skill, creativity, and connection. We believe small, thoughtful actions — like covering a bowl — can lead to lasting change.
                             </p>
                         </div>
                     </div>
-                    
+
                     <div>
-                        <h3 class="section-title">Our Focus </h3>
+                        <h3 class="section-title">Our Focus</h3>
                         <div class="values-grid">
                             <div class="value-card">
                                 <h4 class="value-title">Focus on Local</h4>
-                                <p class="story-text">We’re passionate about supporting local:
-From sourcing fabrics to sewing every cover by hand,we keep things close to home, creating opportunitiesfor women in our own communities.</p>
+                                <p class="story-text">We’re passionate about supporting local: From sourcing fabrics to sewing every cover by hand, we keep things close to home, creating opportunities for women in our own communities.</p>
                             </div>
                             <div class="value-card">
                                 <h4 class="value-title">Affordable</h4>
-                                <p class="story-text">We’re proud to offer products that are handmade withcare, sold at affordable prices, and accessible. Becausewe know that being kind to the planet shouldn’t be aprivilege — it should be a choice we all get to make.</p>
+                                <p class="story-text">We’re proud to offer products that are handmade with care, sold at affordable prices, and accessible. Because we know that being kind to the planet shouldn’t be a privilege — it should be a choice we all get to make.</p>
                             </div>
                             <div class="value-card">
-                                <h4 class="value-title">Quality </h4>
-                                <p class="story-text"> We source all of our materials locally, from respected,reputable suppliers who have been doing what theydo best for generations. We strive to provide you withthe best materials and workmanship available.</p>
+                                <h4 class="value-title">Quality</h4>
+                                <p class="story-text">We source all of our materials locally, from respected, reputable suppliers who have been doing what they do best for generations. We strive to provide you with the best materials and workmanship available.</p>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="founder-section">
                         <div class="team-image" style="max-width: 300px;">
-                            <img src="https://imgur.com/EQZ6SNr.jpg" 
-                                 alt="Michelle Williams, Founder" class="team-photo">
+                            <img src="https://imgur.com/EQZ6SNr.jpg" alt="Michelle Williams, Founder" class="team-photo">
                         </div>
                         <div class="founder-info">
                             <h3 class="founder-name">Michelle Williams</h3>
-                            <p class="founder-role">Founder & Creator of
-Daling Sew-cial (Pty) Ltd.</p>
+                            <p class="founder-role">Founder & Creator of Darling Sew-cial (Pty) Ltd.</p>
                             <p class="story-text">
-                       Growing up in Cape Town in the 90s, during the height of
-the textile industry, I was surrounded by fabric, colour, and
-craftsmanship. I knew from a young age, when I made my
-first scrunchie at 7 that this world — of making and
-creating — was where I belonged.
+                                Growing up in Cape Town in the 90s, during the height of
+                                the textile industry, I was surrounded by fabric, colour, and
+                                craftsmanship. I knew from a young age, when I made my
+                                first scrunchie at 7 that this world — of making and
+                                creating — was where I belonged.
                             </p>
                             <p class="story-text">
-                               There’s always more to learn, and I welcome the growth
-still to come. This is just the beginning.
+                                There’s always more to learn, and I welcome the growth
+                                still to come. This is just the beginning.
                             </p>
-                    
                         </div>
                     </div>
                 </div>
@@ -556,18 +550,14 @@ still to come. This is just the beginning.
     </footer>
 
     <script>
-        // Mobile menu functionality
         document.addEventListener('DOMContentLoaded', function() {
             const mobileMenuButton = document.querySelector('.mobile-menu-button');
             const nav = document.querySelector('nav');
-            
             if (mobileMenuButton && nav) {
                 mobileMenuButton.addEventListener('click', function() {
                     nav.classList.toggle('active');
                 });
             }
-            
-            // Close menu when clicking outside
             document.addEventListener('click', function(event) {
                 if (!event.target.closest('nav') && !event.target.closest('.mobile-menu-button')) {
                     nav.classList.remove('active');
